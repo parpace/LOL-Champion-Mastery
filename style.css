@@ -1,0 +1,29 @@
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+#search-bar {
+    position: relative;
+    width: calc(50% - 20px);
+    height: 40px;
+    background: linear-gradient(to right, white, lightblue);
+    border-radius: 20px;
+    padding: 0 10px;
+}
+
+.arrow {
+    position: absolute;
+    right: 29%;
+    font-size: 20px;
+    color: gray;
+    top: 50%;
+    transform: translateY(-50%);
+}
