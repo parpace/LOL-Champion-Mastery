@@ -1,10 +1,12 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOL Build Finder</title>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
     <header>
@@ -12,9 +14,35 @@
         <h1>Build Finder</h1>
     </header>
     <div class="search">
-        <input type="text" id="search-bar" placeholder="Enter champion here">
+        <form id="search-form">
+            <input type="text" id="search-bar" placeholder="Enter Summoner Name here">
+            <button type="submit">Search</button>
+        </form>
         <div class="arrow">▼</div>
+        <div class="dropdown-menu" id="dropdown-menu">
+            <a href="#">Option 1</a>
+            <a href="#">Option 2</a>
+            <a href="#">Option 3</a>
+            <a href="#">Option 4</a>
+            <a href="#">Option 5</a>
+            <a href="#">Option 6</a>
+            <a href="#">Option 7</a>
+            <a href="#">Option 8</a>
+            <a href="#">Option 9</a>
+            <a href="#">Option 10</a>
+            <a href="#">Option 11</a>
+            <a href="#">Option 12</a>
+            <a href="#">Option 13</a>
+            <a href="#">Option 14</a>
+            <a href="#">Option 15</a>
+            <a href="#">Option 16</a>
+            <a href="#">Option 17</a>
+            <a href="#">Option 18</a>
+            <a href="#">Option 19</a>
+            <a href="#">Option 20</a>
+        </div>
     </div>
     
 </body>
+
 </html>
