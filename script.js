@@ -37,7 +37,7 @@ const updateChampMastery = async () => {
     const apiKey = 'RGAPI-a90bc479-a90e-4360-aa73-3421a5b38c8c'
     const puuid = summonerPuuid
 
-    const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=RGAPI-a90bc479-a90e-4360-aa73-3421a5b38c8c`)
+    const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
     
     // Oh my goodness I'm trying to understand this. At first I only had the forEach below which ChatGBT helped me understand. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my forEach.
     const firstThreeMasteries = response.data.slice(0, 3)
