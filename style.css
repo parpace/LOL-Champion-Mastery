@@ -64,10 +64,80 @@ h2 {
 }
 
 .dropdown-menu a {
-    display: block;
+    display: flex;
     padding: 5px;
     text-decoration: none;
     color: #333;
+}
+
+.dropdown-menu a::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    background-size: cover;
+}
+
+.dropdown-menu a.option1::before {
+    background-image: url(champion/tiles/Aatrox_0.jpg);
+}
+.dropdown-menu a.option2::before {
+    background-image: url(champion/tiles/Ahri_0.jpg);
+}
+.dropdown-menu a.option3::before {
+    background-image: url(champion/tiles/Akali_0.jpg);
+}
+.dropdown-menu a.option4::before {
+    background-image: url(champion/tiles/Akshan_0.jpg);
+}
+.dropdown-menu a.option5::before {
+    background-image: url(champion/tiles/Alistar_0.jpg);
+}
+.dropdown-menu a.option6::before {
+    background-image: url(champion/tiles/Amumu_0.jpg);
+}
+.dropdown-menu a.option7::before {
+    background-image: url(champion/tiles/Anivia_0.jpg);
+}
+.dropdown-menu a.option8::before {
+    background-image: url(champion/tiles/Annie_0.jpg);
+}
+.dropdown-menu a.option9::before {
+    background-image: url(champion/tiles/Aphelios_0.jpg);
+}
+.dropdown-menu a.option10::before {
+    background-image: url(champion/tiles/Ashe_0.jpg);
+}
+.dropdown-menu a.option11::before {
+    background-image: url(champion/tiles/AurelionSol_0.jpg);
+}
+.dropdown-menu a.option12::before {
+    background-image: url(champion/tiles/Azir_0.jpg);
+}
+.dropdown-menu a.option13::before {
+    background-image: url(champion/tiles/Bard_0.jpg);
+}
+.dropdown-menu a.option14::before {
+    background-image: url(champion/tiles/Belveth_0.jpg);
+}
+.dropdown-menu a.option15::before {
+    background-image: url(champion/tiles/Blitzcrank_0.jpg);
+}
+.dropdown-menu a.option16::before {
+    background-image: url(champion/tiles/Brand_0.jpg);
+}
+.dropdown-menu a.option17::before {
+    background-image: url(champion/tiles/Braum_0.jpg);
+}
+.dropdown-menu a.option18::before {
+    background-image: url(champion/tiles/Briar_0.jpg);
+}
+.dropdown-menu a.option19::before {
+    background-image: url(champion/tiles/Caitlyn_0.jpg);
+}
+.dropdown-menu a.option20::before {
+    background-image: url(champion/tiles/Camille_0.jpg);
 }
 
 .dropdown-menu a:hover {
