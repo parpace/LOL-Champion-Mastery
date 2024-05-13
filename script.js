@@ -1,8 +1,12 @@
-/*-------------------------------- Summoner Name Code --------------------------------*/
+/*-------------------------------- Obtaining PUUID from summoner name --------------------------------*/
+
+
 
 // Function and listener for obtaining PUUID based on summoner name
 const searchForm = document.querySelector('#summonerForm')
 const searchInput = document.querySelector('#summoner-search')
+
+let summonerPuuid = ``
 
 const submitSummoner = async (event) => {
     event.preventDefault()
@@ -13,7 +17,10 @@ const submitSummoner = async (event) => {
         const response = await fetch(`http://127.0.0.1:3000/summoner?name=${summonerName}`)
         const data = await response.json()
 
-        console.log('Summoner PUUID:', data.puuid)
+        summonerPuuid = data.puuid
+        console.log(summonerPuuid)
+
+        await updateChampMastery()
     } catch (error) {
         console.error('Failed to fetch summoner PUUID:', error)
         }
@@ -25,6 +32,25 @@ searchInput.addEventListener('keypress', (event) => {
     }
 })
 searchForm.addEventListener('submit', submitSummoner)
+
+const updateChampMastery = async () => {
+    const apiKey = 'RGAPI-a90bc479-a90e-4360-aa73-3421a5b38c8c'
+    const puuid = summonerPuuid
+
+    const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=RGAPI-a90bc479-a90e-4360-aa73-3421a5b38c8c`)
+    
+    // Oh my goodness I'm trying to understand this. At first I only had the forEach below which ChatGBT helped me understand. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my forEach.
+    const firstThreeMasteries = response.data.slice(0, 3)
+    
+    // ChatGBT helped me out here. I had my consts set to response.data.championID, etc.... That was returning undefined. Turns out the data is returning an array, and I needed to itterate over each object in the array the array.
+    firstThreeMasteries.forEach(championMastery => {
+        const champMasteryKey = championMastery.championId
+        const champMasteryLevel = championMastery.championLevel
+        const champMasteryPoints = championMastery.championPoints
+
+        console.log(`key =`, champMasteryKey, `level =`, champMasteryLevel, `point =`, champMasteryPoints)
+    })
+}
 
 
 /*-------------------------------- Champion Name Search --------------------------------*/
@@ -68,5 +94,6 @@ dropdownOptions.forEach(option => {
         championSearchInput.value = selectedChampion
             // Run the searchChampion function
         searchChampion()
+        dropdownMenu.style.display = 'none'
     })
 })

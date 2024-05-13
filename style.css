@@ -5,11 +5,17 @@ body {
 
 .lolgg {
     padding-left: 14%;
+    padding-top: 1%;
+}
+
+.league {
+    padding-left: 10%;
     padding-top: 2%;
 }
 
-.name {
-    padding-left: 6%;
+.searchEngine {
+    padding-left: 12%;
+    padding-bottom: 2%;
 }
 
 .search {
@@ -141,5 +147,5 @@ h2 {
 }
 
 .dropdown-menu a:hover {
-    background-color: antiquewhite;
+    background-color: rgba(0, 191, 255, 0.5);
 }
