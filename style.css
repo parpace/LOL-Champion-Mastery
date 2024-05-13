@@ -1,27 +1,50 @@
-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
+body {
+    background-image: url(champion/splash/Fiora_31.jpg);
+    background-size: cover;
+}
+
+.lolgg {
+    padding-left: 14%;
+    padding-top: 2%;
+}
+
+.name {
+    padding-left: 6%;
 }
 
 .search {
-    position: relative;
-    display: flex;
-    justify-content: center;
+    padding-left: 8%;
 }
 
-#search-bar {
-    position: relative;
-    width: calc(50% - 20px);
+h2 {
+    padding-left: 1.5%;
+}
+
+#summoner-search {
+    width: 20%;
     height: 40px;
-    background: linear-gradient(to right, white, lightblue);
+    background: linear-gradient(to right, white, deepskyblue);
     border-radius: 20px;
     padding: 0 10px;
 }
 
+#champion-search {
+    position: relative;
+    width: 155%;
+    height: 40px;
+    background: linear-gradient(to right, white, deepskyblue);
+    border-radius: 20px;
+    padding: 0 10px;
+}
+
+.search-bar-container {
+    position: relative;
+    display: inline-block; 
+}
+
 .arrow {
     position: absolute;
-    right: 29%;
+    left: 150%;
     font-size: 20px;
     color: gray;
     top: 50%;
@@ -33,20 +56,20 @@ header {
     display: none;
     position: absolute;
     top: calc(100% + 10px);
-    right: 29%;
+    right: 0%;
     background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); 
     border-radius: 5px;
     z-index: 1;
 }
 
 .dropdown-menu a {
     display: block;
-    padding: 10px;
+    padding: 5px;
     text-decoration: none;
     color: #333;
 }
 
 .dropdown-menu a:hover {
-    background-color: #f4f4f4;
+    background-color: antiquewhite;
 }
