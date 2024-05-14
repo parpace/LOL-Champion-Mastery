@@ -2,7 +2,7 @@
 
 // Function and listener for obtaining PUUID based on summoner name
 const searchForm = document.querySelector('#summonerForm')
-const searchInput = document.querySelector('#summoner-search')
+const searchInput = document.querySelector('#summonerSearch')
 
 let summonerPuuid = ``
 
@@ -32,6 +32,8 @@ searchForm.addEventListener('submit', submitSummoner)
 
 
 /*-------------------------------- Obtaining Summoner's highest mastery champions --------------------------------*/
+
+// Selected data from JSON files. Yes I enetered all of this manually. No it wasn't a good use of time. However, the only ways that I could find to link my functions to this JSON data would have involved more backend server work, and I didn't want to have someone else help me write more backend code that I didn't actually fully understand yet. Only alternative was to create a variable that had all of the data manually inputted.
 const championData = {
     "266": {"name": "Aatrox","title": "the Darkin Blade","spells": {
           "The Darkin Blade": {
@@ -457,6 +459,8 @@ const championData = {
     }
   }
 
+  
+// Function for obtaining info from Riot's API. First we use the puuid that we have obtained to gain access to the summoner's champion mastery information. We make sure to only get information on their top 3 highest mastery champions. From there, we can get champion key numbers (what i was using to find champion names in the JSON files), champion mastery level and champion mastery points from the api.
 const updateChampMastery = async () => {
     const apiKey = 'RGAPI-dca6b402-8c2d-45c7-be01-22e18a0f9d02'
     const puuid = summonerPuuid
@@ -479,7 +483,7 @@ const updateChampMastery = async () => {
 
     const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
     
-    // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my forEach.
+    // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my if statement.
     const firstThreeMasteries = response.data.slice(0, 3)
     
     if (firstThreeMasteries.length > 0) {
@@ -495,10 +499,12 @@ const updateChampMastery = async () => {
         const championName2 = championData[champMasteryKey2].name
         const championName3 = championData[champMasteryKey3].name
         
+        // Make the displays visible
         topRight.style.display = `block`
         middleRight.style.display = `block`
         bottomRight.style.display = `block`
 
+        // Update the backgroundImage of each div with the correct champion photo. Style it to cover
         topRight.style.backgroundImage = `url(champion/centered/${championName1}_0.jpg)`
         topRight.style.backgroundSize = 'cover'
         middleRight.style.backgroundImage = `url(champion/centered/${championName2}_0.jpg)`
@@ -506,14 +512,17 @@ const updateChampMastery = async () => {
         bottomRight.style.backgroundImage = `url(champion/centered/${championName3}_0.jpg)`
         bottomRight.style.backgroundSize = 'cover'
 
+        // Update the text content to be the correct champion's name
         champName1.textContent = championData[champMasteryKey1].name
         champName2.textContent = championData[champMasteryKey2].name
         champName3.textContent = championData[champMasteryKey3].name
 
+        // Update the text content to be the mastery level that the player has with that champion
         champMasteryLevel1.textContent = championMastery1.championLevel
         champMasteryLevel2.textContent = championMastery2.championLevel
         champMasteryLevel3.textContent = championMastery3.championLevel
 
+        // Update the text content to be the mastery points that the player has with that champion
         champMasteryPoints1.textContent = championMastery1.championPoints
         champMasteryPoints2.textContent = championMastery2.championPoints
         champMasteryPoints3.textContent = championMastery3.championPoints
@@ -523,45 +532,44 @@ const updateChampMastery = async () => {
 
 /*-------------------------------- Champion Name Search --------------------------------*/
 
+// Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus. We used a nice 1 line ternary which make the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked. Also, I needed to include a listener for when someone clicks outside of the dropdownMenu area, making it dissapear.
 const arrow = document.querySelector(`.arrow`)
-const dropdownMenu = document.getElementById('dropdown-menu')
+const dropdownMenu = document.getElementById('dropdownMenu')
 
-// Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus.
 arrow.addEventListener(`click`, function() {
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'
 })
 
-// Close the dropdown menu when clicking outside of it.
 document.addEventListener('click', function(event) {
     if (!arrow.contains(event.target) && !dropdownMenu.contains(event.target)) {
         dropdownMenu.style.display = 'none'
         }
 }) 
 
-// Function and event listeners for champion-search input
-const championSearchInput = document.querySelector('#champion-search')
-const dropdownOptions = document.querySelectorAll('.dropdown-menu a')
 
+// Update the text and run searchChampion when one of the dropdown menu items is clicked. Also clear the dropdown display
+const dropdownOptions = document.querySelectorAll('.dropdownMenu a')
+const championSearchInput = document.querySelector('#championSearch')
+
+dropdownOptions.forEach(option => {
+    option.addEventListener('click', () => {
+        const selectedChampion = option.textContent
+        championSearchInput.value = selectedChampion
+        
+        searchChampion()
+        dropdownMenu.style.display = 'none'
+    })
+})
+
+
+// Function and event listeners for champion-search input. Run searchChampion when the enter key is pressed
 function searchChampion() {
     const champName = championSearchInput.value
     console.log('Champ name =', champName)
 }
 
-// Run searchChampion when the enter key is presser
 championSearchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
         searchChampion()
     }
-})
-
-// Update the text and run searchChampion when one of the dropdown menu items is clicked
-dropdownOptions.forEach(option => {
-    option.addEventListener('click', () => {
-        const selectedChampion = option.textContent
-            // Update champion search input value
-        championSearchInput.value = selectedChampion
-            // Run the searchChampion function
-        searchChampion()
-        dropdownMenu.style.display = 'none'
-    })
 })

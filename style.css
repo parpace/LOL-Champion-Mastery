@@ -6,6 +6,12 @@ body {
     padding: 0;
 }
 
+.championPage {
+    flex: 1;
+    border-radius: 50px;
+    background-color: blue;
+}
+
 .topRight, .middleRight, .bottomRight {
     flex: 1;
     height: 33.33vh;
@@ -50,7 +56,7 @@ h2 {
     margin-bottom: 0;
 }
 
-#summoner-search {
+#summonerSearch {
     width: 50%;
     height: 40px;
     background: linear-gradient(to right, white, deepskyblue);
@@ -59,7 +65,7 @@ h2 {
     margin-bottom: 4%;
 }
 
-#champion-search {
+#championSearch {
     position: relative;
     width: 155%;
     height: 40px;
@@ -83,7 +89,7 @@ h2 {
     cursor: pointer;
 }
 
-.dropdown-menu {
+.dropdownMenu {
     display: none;
     position: absolute;
     top: calc(100% + 10px);
@@ -94,14 +100,14 @@ h2 {
     z-index: 1;
 }
 
-.dropdown-menu a {
+.dropdownMenu a {
     display: flex;
     padding: 5px;
     text-decoration: none;
     color: #333;
 }
 
-.dropdown-menu a::before {
+.dropdownMenu a::before {
     content: "";
     display: inline-block;
     width: 20px;
@@ -110,68 +116,68 @@ h2 {
     background-size: cover;
 }
 
-.dropdown-menu a.option1::before {
+.dropdownMenu a.option1::before {
     background-image: url(champion/tiles/Aatrox_0.jpg);
 }
-.dropdown-menu a.option2::before {
+.dropdownMenu a.option2::before {
     background-image: url(champion/tiles/Ahri_0.jpg);
 }
-.dropdown-menu a.option3::before {
+.dropdownMenu a.option3::before {
     background-image: url(champion/tiles/Akali_0.jpg);
 }
-.dropdown-menu a.option4::before {
+.dropdownMenu a.option4::before {
     background-image: url(champion/tiles/Akshan_0.jpg);
 }
-.dropdown-menu a.option5::before {
+.dropdownMenu a.option5::before {
     background-image: url(champion/tiles/Alistar_0.jpg);
 }
-.dropdown-menu a.option6::before {
+.dropdownMenu a.option6::before {
     background-image: url(champion/tiles/Amumu_0.jpg);
 }
-.dropdown-menu a.option7::before {
+.dropdownMenu a.option7::before {
     background-image: url(champion/tiles/Anivia_0.jpg);
 }
-.dropdown-menu a.option8::before {
+.dropdownMenu a.option8::before {
     background-image: url(champion/tiles/Annie_0.jpg);
 }
-.dropdown-menu a.option9::before {
+.dropdownMenu a.option9::before {
     background-image: url(champion/tiles/Aphelios_0.jpg);
 }
-.dropdown-menu a.option10::before {
+.dropdownMenu a.option10::before {
     background-image: url(champion/tiles/Ashe_0.jpg);
 }
-.dropdown-menu a.option11::before {
+.dropdownMenu a.option11::before {
     background-image: url(champion/tiles/AurelionSol_0.jpg);
 }
-.dropdown-menu a.option12::before {
+.dropdownMenu a.option12::before {
     background-image: url(champion/tiles/Azir_0.jpg);
 }
-.dropdown-menu a.option13::before {
+.dropdownMenu a.option13::before {
     background-image: url(champion/tiles/Bard_0.jpg);
 }
-.dropdown-menu a.option14::before {
+.dropdownMenu a.option14::before {
     background-image: url(champion/tiles/Belveth_0.jpg);
 }
-.dropdown-menu a.option15::before {
+.dropdownMenu a.option15::before {
     background-image: url(champion/tiles/Blitzcrank_0.jpg);
 }
-.dropdown-menu a.option16::before {
+.dropdownMenu a.option16::before {
     background-image: url(champion/tiles/Brand_0.jpg);
 }
-.dropdown-menu a.option17::before {
+.dropdownMenu a.option17::before {
     background-image: url(champion/tiles/Braum_0.jpg);
 }
-.dropdown-menu a.option18::before {
+.dropdownMenu a.option18::before {
     background-image: url(champion/tiles/Briar_0.jpg);
 }
-.dropdown-menu a.option19::before {
+.dropdownMenu a.option19::before {
     background-image: url(champion/tiles/Caitlyn_0.jpg);
 }
-.dropdown-menu a.option20::before {
+.dropdownMenu a.option20::before {
     background-image: url(champion/tiles/Camille_0.jpg);
 }
 
-.dropdown-menu a:hover {
+.dropdownMenu a:hover {
     background-color: rgba(0, 191, 255, 0.5);
 }
 
@@ -208,4 +214,58 @@ h2 {
         1px -1px 0 black,
         -1px 1px 0 black,
         1px 1px 0 black;
+}
+
+.champPageName {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+        padding-top: 3%;
+}
+
+.champTitle {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.abilities {
+    text-align: center;
+    font-size: 35px;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+    padding-top: 5%;
+}
+
+.spells {
+    display: flex;
+    flex-direction: column;
+}
+
+.qSpell, .wSpell, .eSpell, .rSpell {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 3px, solid, black;
+}
+
+.qSpell h2, .wSpell h2, .eSpell h2, .rSpell h2 {
+    font-size: 50px;
 }
