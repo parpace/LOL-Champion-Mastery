@@ -29,18 +29,6 @@ body {
     flex-direction: column;
 }
 
-.topRight {
-    background-color: aqua;
-}
-
-.middleRight {
-    background-color: blue;
-}
-
-.bottomRight {
-    background-color: darkblue;
-}
-
 .lolgg {
     padding-left: 14%;
     padding-top: 1%;

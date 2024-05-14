@@ -174,9 +174,9 @@ const updateChampMastery = async () => {
     const apiKey = 'RGAPI-dca6b402-8c2d-45c7-be01-22e18a0f9d02'
     const puuid = summonerPuuid
 
-    const topRight = document.querySelector(`.topRight`)
-    const middleRight = document.querySelector(`.middleRight`)
-    const bottomRight = document.querySelector(`.bottomRight`)
+    let topRight = document.querySelector(`.topRight`)
+    let middleRight = document.querySelector(`.middleRight`)
+    let bottomRight = document.querySelector(`.bottomRight`)
 
     let champName1 = document.querySelector(`.champName1`)
     let champName2 = document.querySelector(`.champName2`)
@@ -196,10 +196,6 @@ const updateChampMastery = async () => {
     const firstThreeMasteries = response.data.slice(0, 3)
     
     if (firstThreeMasteries.length > 0) {
-        topRight.style.display = `block`
-        middleRight.style.display = `block`
-        bottomRight.style.display = `block`
-        
         const championMastery1 = firstThreeMasteries[0]
         const championMastery2 = firstThreeMasteries[1]
         const championMastery3 = firstThreeMasteries[2]
@@ -207,6 +203,19 @@ const updateChampMastery = async () => {
         const champMasteryKey1 = championMastery1.championId
         const champMasteryKey2 = championMastery2.championId
         const champMasteryKey3 = championMastery3.championId
+        
+        const championName1 = championData[champMasteryKey1].name
+        const championName2 = championData[champMasteryKey2].name
+        const championName3 = championData[champMasteryKey3].name
+        
+        topRight.style.display = `block`
+        middleRight.style.display = `block`
+        bottomRight.style.display = `block`
+
+        console.log(champName1)
+        topRight.style.backgroundImage = `url(champion/centered/${championName1}_0.jpg)`
+        middleRight.style.backgroundImage = `url(champion/centered/${championName2}_0.jpg)`
+        bottomRight.style.backgroundImage = `url(champion/centered/${championName3}_0.jpg)`
 
         champName1.textContent = championData[champMasteryKey1].name
         champName2.textContent = championData[champMasteryKey2].name
@@ -217,12 +226,8 @@ const updateChampMastery = async () => {
         champMasteryLevel3.textContent = championMastery3.championLevel
 
         champMasteryPoints1.textContent = championMastery1.championPoints
-        champMasteryPoints2 = championMastery2.championPoints
-        champMasteryPoints3 = championMastery3.championPoints
-
-        // let topRight = document/querySelector(`.topRight`)
-
-        // topRight.backgroundimage = `champion/centered/${championName}_0.jpg`
+        champMasteryPoints2.textContent = championMastery2.championPoints
+        champMasteryPoints3.textContent = championMastery3.championPoints
     }
 }
 
