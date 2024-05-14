@@ -114,24 +114,294 @@ const championData = {
             }
         }
     },
-    "98": {
-        "name": "Shen",
-        "title": "the Eye of Twilight",
+    "32": {
+        "name": "Amumu",
+        "title": "the Sad Mummy",
         "spells": {
-            "Twilight Assault": {
-                "cooldown": [8,7.25,6.5,5.75,5]
+            "Bandage Toss": {
+                "cooldown": [3, 3, 3, 3, 3]
             },
-            "Spirit's Refuge": {
-                "cooldown": [18,16.5,15,13.5,12]
+            "Despair": {
+                "cooldown": [1, 1, 1, 1, 1]
             },
-            "Shadow Dash": {
-                "cooldown": [18,16,14,12,10]
+            "Tantrum": {
+                "cooldown": [9, 8, 7, 6, 5]
             },
-            "Stand United": {
-                "cooldown": [200,180,160]
+            "Curse of the Sad Mummy": {
+                "cooldown": [150, 125, 100]
             }
         }
     },
+    "34": {
+        "name": "Anivia",
+        "title": "the Cryophoenix",
+        "spells": {
+            "Flash Frost": {
+                "cooldown": [12, 11, 10, 9, 8]
+            },
+            "Crystallize": {
+                "cooldown": [17, 17, 17, 17, 17]
+            },
+            "Frostbite": {
+                "cooldown": [4, 4, 4, 4, 4]
+            },
+            "Glacial Storm": {
+                "cooldown": [4, 3, 2]
+            }
+        }
+    },
+    "1": {
+        "name": "Annie",
+        "title": "the Dark Child",
+        "spells": {
+            "Disintegrate": {
+                "cooldown": [4, 4, 4, 4, 4]
+            },
+            "Incinerate": {
+                "cooldown": [8, 8, 8, 8, 8]
+            },
+            "Molten Shield": {
+                "cooldown": [12, 11.5, 11, 10.5, 10]
+            },
+            "Summon: Tibbers": {
+                "cooldown": [130, 115, 100]
+            }
+        }
+    },
+    "523": {
+        "name": "Aphelios",
+        "title": "the Weapon of the Faithful",
+        "spells": {
+            "Weapon Abilites": {
+                "cooldown": [9, 9, 9, 9, 9, 9]
+            },
+            "Phase": {
+                "cooldown": [0.8, 0.8, 0.8, 0.8, 0.8, 0.8]
+            },
+            "Weapon Queue System": {
+                "cooldown": [0, 0, 0, 0, 0, 0]
+            },
+            "Moonlight Vigil": {
+                "cooldown": [120, 110, 100]
+            }
+        }
+    },
+    "22": {
+        "name": "Ashe",
+        "title": "the Frost Archer",
+        "spells": {
+            "Ranger's Focus": {
+                "cooldown": [0, 0, 0, 0, 0]
+            },
+            "Volley": {
+                "cooldown": [18, 14.5, 11, 7.5, 4]
+            },
+            "Hawkshot": {
+                "cooldown": [5, 5, 5, 5, 5]
+            },
+            "Enchanted Crystal Arrow": {
+                "cooldown": [100, 80, 60]
+            }
+        }
+    },
+    "136": {
+        "name": "Aurelion Sol",
+        "title": "The Star Forger",
+        "spells": {
+            "Breath of Light": {
+                "cooldown": [3, 3, 3, 3, 3]
+            },
+            "Astral Flight": {
+                "cooldown": [0, 0, 0, 0, 0]
+            },
+            "Singularity": {
+                "cooldown": [12, 12, 12, 12, 12]
+            },
+            "Falling Star / The Skies Descend": {
+                "cooldown": [120, 110, 100]
+            }
+        }
+    },    
+    "268": {
+        "name": "Azir",
+        "title": "the Emperor of the Sands",
+        "spells": {
+            "Conquering Sands": {
+                "cooldown": [14, 12, 10, 8, 6]
+            },
+            "Arise!": {
+                "cooldown": [1.5, 1.5, 1.5, 1.5, 1.5]
+            },
+            "Shifting Sands": {
+                "cooldown": [22, 20.5, 19, 17.5, 16]
+            },
+            "Emperor's Divide": {
+                "cooldown": [120, 105, 90]
+            }
+        }
+    },           
+    "432": {
+        "name": "Bard",
+        "title": "the Wandering Caretaker",
+        "spells": {
+            "Cosmic Binding": {
+                "cooldown": [11, 10, 9, 8, 7]
+            },
+            "Caretaker's Shrine": {
+                "cooldown": [0, 0, 0, 0, 0]
+            },
+            "Magical Journey": {
+                "cooldown": [22, 20.5, 19, 17.5, 16]
+            },
+            "Tempered Fate": {
+                "cooldown": [110, 95, 80]
+            }
+        }
+    },  
+    "200": {
+        "name": "Bel'Veth",
+        "title": "the Empress of the Void",
+        "spells": {
+            "Void Surge": {
+                "cooldown": [1, 1, 1, 1, 1]
+            },
+            "Above and Below": {
+                "cooldown": [12, 11, 10, 9, 8]
+            },
+            "Royal Maelstrom": {
+                "cooldown": [20, 19, 18, 17, 16]
+            },
+            "Endless Banquet": {
+                "cooldown": [1, 1, 1]
+            }
+        }
+    },      
+    "53": {
+        "name": "Blitzcrank",
+        "title": "the Great Steam Golem",
+        "spells": {
+            "Rocket Grab": {
+                "cooldown": [20, 19, 18, 17, 16]
+            },
+            "Overdrive": {
+                "cooldown": [15, 15, 15, 15, 15]
+            },
+            "Power Fist": {
+                "cooldown": [9, 8, 7, 6, 5]
+            },
+            "Static Field": {
+                "cooldown": [60, 40, 20]
+            }
+        }
+    },
+    "63": {
+        "name": "Brand",
+        "title": "the Burning Vengeance",
+        "spells": {
+            "Sear": {
+                "cooldown": [8, 7.5, 7, 6.5, 6]
+            },
+            "Pillar of Flame": {
+                "cooldown": [10, 9.5, 9, 8.5, 8]
+            },
+            "Conflagration": {
+                "cooldown": [12, 11, 10, 9, 8]
+            },
+            "Pyroclasm": {
+                "cooldown": [110, 100, 90]
+            }
+        }
+    },    
+    "201": {
+        "name": "Braum",
+        "title": "the Heart of the Freljord",
+        "spells": {
+            "Winter's Bite": {
+                "cooldown": [8, 7.5, 7, 6.5, 6]
+            },
+            "Stand Behind Me": {
+                "cooldown": [12, 11, 10, 9, 8]
+            },
+            "Unbreakable": {
+                "cooldown": [16, 14, 12, 10, 8]
+            },
+            "Glacial Fissure": {
+                "cooldown": [120, 100, 80]
+            }
+        }
+    },    
+    "233": {
+        "name": "Briar",
+        "title": "the Restrained Hunger",
+        "spells": {
+            "Head Rush": {
+                "cooldown": [13, 12, 11, 10, 9]
+            },
+            "Blood Frenzy / Snack Attack": {
+                "cooldown": [14, 13, 12, 11, 10]
+            },
+            "Chilling Scream": {
+                "cooldown": [16, 16, 16, 16, 16]
+            },
+            "Certain Death": {
+                "cooldown": [120, 100, 80]
+            }
+        }
+    },    
+    "51": {
+        "name": "Caitlyn",
+        "title": "the Sheriff of Piltover",
+        "spells": {
+            "Piltover Peacemaker": {
+                "cooldown": [10, 9, 8, 7, 6]
+            },
+            "Yordle Snap Trap": {
+                "cooldown": [0.5, 0.5, 0.5, 0.5, 0.5]
+            },
+            "90 Caliber Net": {
+                "cooldown": [16, 14, 12, 10, 8]
+            },
+            "Ace in the Hole": {
+                "cooldown": [90, 90, 90]
+            }
+        }
+    },    
+    "164": {
+        "name": "Camille",
+        "title": "the Steel Shadow",
+        "spells": {
+            "Precision Protocol": {
+                "cooldown": [9, 8, 7, 6, 5]
+            },
+            "Tactical Sweep": {
+                "cooldown": [17, 15.5, 14, 12.5, 11]
+            },
+            "Hookshot": {
+                "cooldown": [16, 15, 14, 13, 12]
+            },
+            "The Hextech Ultimatum": {
+                "cooldown": [140, 115, 90]
+            }
+        }
+    },    
+    "69": {
+        "name": "Cassiopeia",
+        "title": "the Serpent's Embrace",
+        "spells": {
+            "Noxious Blast": {
+                "cooldown": [3.5, 3.5, 3.5, 3.5, 3.5]
+            },
+            "Miasma": {
+                "cooldown": [24, 22, 20, 18, 16]
+            },
+            "Twin Fang": {
+                "cooldown": [0.75, 0.75, 0.75, 0.75, 0.75]
+            },
+            "Petrifying Gaze": {
+                "cooldown": [120, 100, 80]
+            }
+        }
+    },    
     "3": {
         "name": "Galio",
         "title": "the Colossus",
@@ -150,24 +420,24 @@ const championData = {
             }
         }
     },
-    "164": {
-        "name": "Camille",
-        "title": "the Steel Shadow",
+    "98": {
+        "name": "Shen",
+        "title": "the Eye of Twilight",
         "spells": {
-            "Precision Protocol": {
-                "cooldown": [9,8,7,6,5]
+            "Twilight Assault": {
+                "cooldown": [8,7.25,6.5,5.75,5]
             },
-            "Tactical Sweep": {
-                "cooldown": [17,15.5,14,12.5,11]
+            "Spirit's Refuge": {
+                "cooldown": [18,16.5,15,13.5,12]
             },
-            "Hookshot": {
-                "cooldown": [16,15,14,13,12]
+            "Shadow Dash": {
+                "cooldown": [18,16,14,12,10]
             },
-            "The Hextech Ultimatum": {
-                "cooldown": [140,115,90]
+            "Stand United": {
+                "cooldown": [200,180,160]
             }
         }
-    },
+    }
   }
 
 const updateChampMastery = async () => {
@@ -192,7 +462,7 @@ const updateChampMastery = async () => {
 
     const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
     
-    // Oh my goodness I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my forEach.
+    // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my forEach.
     const firstThreeMasteries = response.data.slice(0, 3)
     
     if (firstThreeMasteries.length > 0) {
@@ -214,8 +484,11 @@ const updateChampMastery = async () => {
 
         console.log(champName1)
         topRight.style.backgroundImage = `url(champion/centered/${championName1}_0.jpg)`
+        topRight.style.backgroundSize = 'cover'
         middleRight.style.backgroundImage = `url(champion/centered/${championName2}_0.jpg)`
+        middleRight.style.backgroundSize = 'cover'
         bottomRight.style.backgroundImage = `url(champion/centered/${championName3}_0.jpg)`
+        bottomRight.style.backgroundSize = 'cover'
 
         champName1.textContent = championData[champMasteryKey1].name
         champName2.textContent = championData[champMasteryKey2].name
