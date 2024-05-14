@@ -9,6 +9,7 @@ body {
 .topRight, .middleRight, .bottomRight {
     flex: 1;
     height: 33.33vh;
+    border-radius: 30px;
     display: none;
 }
 
@@ -46,6 +47,7 @@ body {
 
 h2 {
     padding-left: 3%;
+    margin-bottom: 0;
 }
 
 #summoner-search {
@@ -54,6 +56,7 @@ h2 {
     background: linear-gradient(to right, white, deepskyblue);
     border-radius: 20px;
     padding: 0 10px;
+    margin-bottom: 4%;
 }
 
 #champion-search {
@@ -178,6 +181,13 @@ h2 {
     text-align: center;
     font-size: 45px;
     margin-top: 0;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+
 }
 
 .champMastery {
@@ -189,4 +199,13 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    white-space: nowrap;
+    padding-top: 5%;
+    font-size: 130%;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
 }

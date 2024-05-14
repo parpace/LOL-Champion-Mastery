@@ -16,7 +16,6 @@ const submitSummoner = async (event) => {
         const data = await response.json()
 
         summonerPuuid = data.puuid
-        console.log(summonerPuuid)
 
         await updateChampMastery()
     } catch (error) {
@@ -402,6 +401,24 @@ const championData = {
             }
         }
     },    
+    "516": {
+        "name": "Ornn",
+        "title": "The Fire below the Mountain",
+        "spells": {
+            "Volcanic Rupture": {
+                "cooldown": [9, 8.5, 8, 7.5, 7]
+            },
+            "Bellows Breath": {
+                "cooldown": [12, 11.5, 11, 10.5, 10]
+            },
+            "Searing Charge": {
+                "cooldown": [14, 13.5, 13, 12.5, 12]
+            },
+            "Call of the Forge God": {
+                "cooldown": [140, 120, 100]
+            }
+        }
+    },    
     "3": {
         "name": "Galio",
         "title": "the Colossus",
@@ -482,7 +499,6 @@ const updateChampMastery = async () => {
         middleRight.style.display = `block`
         bottomRight.style.display = `block`
 
-        console.log(champName1)
         topRight.style.backgroundImage = `url(champion/centered/${championName1}_0.jpg)`
         topRight.style.backgroundSize = 'cover'
         middleRight.style.backgroundImage = `url(champion/centered/${championName2}_0.jpg)`
