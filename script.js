@@ -1,7 +1,5 @@
 /*-------------------------------- Obtaining PUUID from summoner name --------------------------------*/
 
-
-
 // Function and listener for obtaining PUUID based on summoner name
 const searchForm = document.querySelector('#summonerForm')
 const searchInput = document.querySelector('#summoner-search')
@@ -33,8 +31,11 @@ searchInput.addEventListener('keypress', (event) => {
 })
 searchForm.addEventListener('submit', submitSummoner)
 
+
+/*-------------------------------- Obtaining Summoner's highest mastery champions --------------------------------*/
+
 const updateChampMastery = async () => {
-    const apiKey = 'RGAPI-a90bc479-a90e-4360-aa73-3421a5b38c8c'
+    const apiKey = 'RGAPI-dca6b402-8c2d-45c7-be01-22e18a0f9d02'
     const puuid = summonerPuuid
 
     const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
