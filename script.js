@@ -174,44 +174,51 @@ const updateChampMastery = async () => {
     const apiKey = 'RGAPI-dca6b402-8c2d-45c7-be01-22e18a0f9d02'
     const puuid = summonerPuuid
 
+    const topRight = document.querySelector(`.topRight`)
+    const middleRight = document.querySelector(`.middleRight`)
+    const bottomRight = document.querySelector(`.bottomRight`)
+
     let champName1 = document.querySelector(`.champName1`)
-    // let champName2 = document.querySelector(`.champName2`)
-    // let champName3 = document.querySelector(`.champName3`)
+    let champName2 = document.querySelector(`.champName2`)
+    let champName3 = document.querySelector(`.champName3`)
 
     let champMasteryLevel1 = document.querySelector(`#champMasteryLevel1`)
-    // let champMasteryLevel2 = document.querySelector(`#champMasteryLevel2`)
-    // let champMasteryLevel3 = document.querySelector(`#champMasteryLevel3`)
+    let champMasteryLevel2 = document.querySelector(`#champMasteryLevel2`)
+    let champMasteryLevel3 = document.querySelector(`#champMasteryLevel3`)
 
     let champMasteryPoints1 = document.querySelector(`#champMasteryPoints1`)
-    // let champMasteryPoints2 = document.querySelector(`#champMasteryPoints2`)
-    // let champMasteryPoints3 = document.querySelector(`#champMasteryPoints3`)
+    let champMasteryPoints2 = document.querySelector(`#champMasteryPoints2`)
+    let champMasteryPoints3 = document.querySelector(`#champMasteryPoints3`)
 
     const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
     
-    // Oh my goodness I'm trying to understand this. At first I only had the forEach below which ChatGBT helped me understand. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my forEach.
+    // Oh my goodness I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my forEach.
     const firstThreeMasteries = response.data.slice(0, 3)
     
-    // ChatGBT helped me out here. I had my consts set to response.data.championID, etc.... That was returning undefined. Turns out the data is returning an array, and I needed to itterate over each object in the array the array.
     if (firstThreeMasteries.length > 0) {
+        topRight.style.display = `block`
+        middleRight.style.display = `block`
+        bottomRight.style.display = `block`
+        
         const championMastery1 = firstThreeMasteries[0]
-        // const championMastery2 = firstThreeMasteries[1]
-        // const championMastery3 = firstThreeMasteries[2]
+        const championMastery2 = firstThreeMasteries[1]
+        const championMastery3 = firstThreeMasteries[2]
 
         const champMasteryKey1 = championMastery1.championId
-        // const champMasteryKey2 = championMastery2.championId
-        // const champMasteryKey3 = championMastery3.championId
+        const champMasteryKey2 = championMastery2.championId
+        const champMasteryKey3 = championMastery3.championId
 
         champName1.textContent = championData[champMasteryKey1].name
-        // champName2.textContent = championData[champMasteryKey2].name
-        // champName3.textContent = championData[champMasteryKey3].name
+        champName2.textContent = championData[champMasteryKey2].name
+        champName3.textContent = championData[champMasteryKey3].name
 
         champMasteryLevel1.textContent = championMastery1.championLevel
-        // champMasteryLevel2.textContent = championMastery2.championLevel
-        // champMasteryLevel3.textContent = championMastery3.championLevel
+        champMasteryLevel2.textContent = championMastery2.championLevel
+        champMasteryLevel3.textContent = championMastery3.championLevel
 
         champMasteryPoints1.textContent = championMastery1.championPoints
-        // champMasteryPoints2 = championMastery2.championPoints
-        // champMasteryPoints3 = championMastery3.championPoints
+        champMasteryPoints2 = championMastery2.championPoints
+        champMasteryPoints3 = championMastery3.championPoints
 
         // let topRight = document/querySelector(`.topRight`)
 

@@ -9,7 +9,7 @@ body {
 .topRight, .middleRight, .bottomRight {
     flex: 1;
     height: 33.33vh;
-    /* display: none; */
+    display: none;
 }
 
 .container {
@@ -184,7 +184,9 @@ h2 {
     background-color: rgba(0, 191, 255, 0.5);
 }
 
-.champName1 {
+.rightSide .champName1,
+.rightSide .champName2,
+.rightSide .champName3 {
     text-align: center;
     font-size: 45px;
     margin-top: 0;
