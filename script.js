@@ -33,10 +33,158 @@ searchForm.addEventListener('submit', submitSummoner)
 
 
 /*-------------------------------- Obtaining Summoner's highest mastery champions --------------------------------*/
+const championData = {
+    "266": {"name": "Aatrox","title": "the Darkin Blade","spells": {
+          "The Darkin Blade": {
+            "cooldown": [14, 12, 10, 8, 6]
+          },
+          "Infernal Chains": {
+            "cooldown": [20, 18, 16, 14, 12]
+          },
+          "Umbral Dash": {
+            "cooldown": [9, 8, 7, 6, 5]
+          },
+          "World Ender": {
+            "cooldown": [120, 100, 80]
+          }}},
+    "103": {"name": "Ahri","title": "the Nine-Tailed Fox","spells": {
+        "Orb of Deception": {
+            "cooldown": [7, 7, 7, 7, 7]
+        },
+        "Fox-Fire": {
+            "cooldown": [9, 8, 7, 6, 5]
+        },
+        "Charm": {
+            "cooldown": [12, 12, 12, 12, 12]
+        },
+        "Spirit Rush": {
+            "cooldown": [130, 115, 100]
+        }}},
+    "84": {
+        "name": "Akali",
+        "title": "the Rogue Assassin",
+        "spells": {
+            "Five Point Strike": {
+                "cooldown": [1.5, 1.5, 1.5, 1.5, 1.5]
+            },
+            "Twilight Shroud": {
+                "cooldown": [20, 20, 20, 20, 20]
+            },
+            "Shuriken Flip": {
+                "cooldown": [16, 14.5, 13, 11.5, 10]
+            },
+            "Perfect Execution": {
+                "cooldown": [100, 80, 60]
+            }
+        }
+    },
+    "166": {
+        "name": "Akshan",
+        "title": "the Rogue Sentinel",
+        "spells": {
+            "Avengerang": {
+                "cooldown": [8, 7.25, 6.5, 5.75, 5]
+            },
+            "Going Rogue": {
+                "cooldown": [18, 14, 10, 6, 2]
+            },
+            "Heroic Swing": {
+                "cooldown": [18, 16.5, 15, 13.5, 12]
+            },
+            "Comeuppance": {
+                "cooldown": [100, 85, 70]
+            }
+        }
+    },
+    "12": {
+        "name": "Alistar",
+        "title": "the Minotaur",
+        "spells": {
+            "Pulverize": {
+                "cooldown": [14, 13, 12, 11, 10]
+            },
+            "Headbutt": {
+                "cooldown": [14, 13, 12, 11, 10]
+            },
+            "Trample": {
+                "cooldown": [12, 11.5, 11, 10.5, 10]
+            },
+            "Unbreakable Will": {
+                "cooldown": [120, 100, 80]
+            }
+        }
+    },
+    "98": {
+        "name": "Shen",
+        "title": "the Eye of Twilight",
+        "spells": {
+            "Twilight Assault": {
+                "cooldown": [8,7.25,6.5,5.75,5]
+            },
+            "Spirit's Refuge": {
+                "cooldown": [18,16.5,15,13.5,12]
+            },
+            "Shadow Dash": {
+                "cooldown": [18,16,14,12,10]
+            },
+            "Stand United": {
+                "cooldown": [200,180,160]
+            }
+        }
+    },
+    "3": {
+        "name": "Galio",
+        "title": "the Colossus",
+        "spells": {
+            "Winds of War": {
+                "cooldown": [11,10,9,8,7]
+            },
+            "Shield of Durand": {
+                "cooldown": [18,17,16,15,14]
+            },
+            "Justice Punch": {
+                "cooldown": [11,10,9,8,7]
+            },
+            "Hero's Entrance": {
+                "cooldown": [180,160,140]
+            }
+        }
+    },
+    "164": {
+        "name": "Camille",
+        "title": "the Steel Shadow",
+        "spells": {
+            "Precision Protocol": {
+                "cooldown": [9,8,7,6,5]
+            },
+            "Tactical Sweep": {
+                "cooldown": [17,15.5,14,12.5,11]
+            },
+            "Hookshot": {
+                "cooldown": [16,15,14,13,12]
+            },
+            "The Hextech Ultimatum": {
+                "cooldown": [140,115,90]
+            }
+        }
+    },
+  }
 
 const updateChampMastery = async () => {
     const apiKey = 'RGAPI-dca6b402-8c2d-45c7-be01-22e18a0f9d02'
     const puuid = summonerPuuid
+
+    let champName1 = document.querySelector(`.champName1`)
+    // let champName2 = document.querySelector(`.champName2`)
+    // let champName3 = document.querySelector(`.champName3`)
+
+    let champMasteryLevel1 = document.querySelector(`#champMasteryLevel1`)
+    // let champMasteryLevel2 = document.querySelector(`#champMasteryLevel2`)
+    // let champMasteryLevel3 = document.querySelector(`#champMasteryLevel3`)
+
+    let champMasteryPoints1 = document.querySelector(`#champMasteryPoints1`)
+    // let champMasteryPoints2 = document.querySelector(`#champMasteryPoints2`)
+    // let champMasteryPoints3 = document.querySelector(`#champMasteryPoints3`)
 
     const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
     
@@ -44,13 +192,31 @@ const updateChampMastery = async () => {
     const firstThreeMasteries = response.data.slice(0, 3)
     
     // ChatGBT helped me out here. I had my consts set to response.data.championID, etc.... That was returning undefined. Turns out the data is returning an array, and I needed to itterate over each object in the array the array.
-    firstThreeMasteries.forEach(championMastery => {
-        const champMasteryKey = championMastery.championId
-        const champMasteryLevel = championMastery.championLevel
-        const champMasteryPoints = championMastery.championPoints
+    if (firstThreeMasteries.length > 0) {
+        const championMastery1 = firstThreeMasteries[0]
+        // const championMastery2 = firstThreeMasteries[1]
+        // const championMastery3 = firstThreeMasteries[2]
 
-        console.log(`key =`, champMasteryKey, `level =`, champMasteryLevel, `point =`, champMasteryPoints)
-    })
+        const champMasteryKey1 = championMastery1.championId
+        // const champMasteryKey2 = championMastery2.championId
+        // const champMasteryKey3 = championMastery3.championId
+
+        champName1.textContent = championData[champMasteryKey1].name
+        // champName2.textContent = championData[champMasteryKey2].name
+        // champName3.textContent = championData[champMasteryKey3].name
+
+        champMasteryLevel1.textContent = championMastery1.championLevel
+        // champMasteryLevel2.textContent = championMastery2.championLevel
+        // champMasteryLevel3.textContent = championMastery3.championLevel
+
+        champMasteryPoints1.textContent = championMastery1.championPoints
+        // champMasteryPoints2 = championMastery2.championPoints
+        // champMasteryPoints3 = championMastery3.championPoints
+
+        // let topRight = document/querySelector(`.topRight`)
+
+        // topRight.backgroundimage = `champion/centered/${championName}_0.jpg`
+    }
 }
 
 

@@ -9,7 +9,7 @@ body {
 .topRight, .middleRight, .bottomRight {
     flex: 1;
     height: 33.33vh;
-    display: none;
+    /* display: none; */
 }
 
 .container {
@@ -51,7 +51,7 @@ body {
     padding-top: 2%;
 }
 
-.champMastery {
+.championMastery {
     padding-left: 4%;
     padding-bottom: 2%;
 }
@@ -182,4 +182,21 @@ h2 {
 
 .dropdown-menu a:hover {
     background-color: rgba(0, 191, 255, 0.5);
+}
+
+.champName1 {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 0;
+}
+
+.champMastery {
+    display: flex;
+    justify-content: space-around;
+}
+
+.level, .mastery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
