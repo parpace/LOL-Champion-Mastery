@@ -262,8 +262,9 @@ h2 {
 .qSpell, .wSpell, .eSpell, .rSpell {
     display: flex;
     justify-content: space-around;
-    align-items: center;
-    border: 3px, solid, black;
+    border: 3px solid black;
+    border-radius: 20px;
+    border-style: ridge;
 }
 
 .qSpell h2, .wSpell h2, .eSpell h2, .rSpell h2 {
@@ -276,10 +277,33 @@ h2 {
         1px 1px 0 black;
 }
 
+.qSpellInfo, .wSpellInfo, .eSpellInfo, .rSpellInfo {
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .spellName1, .spellName2, .spellName3, .spellName4 {
     font-size: 30px;
 }
 
+.cooldownContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .cooldown {
     font-size: 30px;
+}
+
+.spell1Cooldown, .spell2Cooldown, .spell3Cooldown, .spell4Cooldown {
+    font-size: 20px;
 }

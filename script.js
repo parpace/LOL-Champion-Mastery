@@ -1136,7 +1136,7 @@ const updateChampMastery = async () => {
 }
 
 
-/*-------------------------------- Champion Name Search --------------------------------*/
+/*-------------------------------------- Champion Name Search ----------------------------------------*/
 
 // Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus. We used a nice one line ternary which commands the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked. Also, I needed to include a listener for when someone clicks outside of the dropdownMenu area, making it dissapear.
 const arrow = document.querySelector(`.arrow`)
@@ -1173,6 +1173,8 @@ championSearchInput.addEventListener('keypress', (event) => {
         searchChampion()
     }
 })
+
+/*------------------------------------- Updating Champion Page -----------------------------------------*/
 
 
 // I want to create a function that checks to see if the value entered into championSearch is equivalent to one of the names in our championData. If the answer is yet, I want the function to make the champion content appear, and update values for the champion name, title, spell names and spell cooldowns. I want it to use the championData to achieve this.
