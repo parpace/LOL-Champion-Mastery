@@ -1068,71 +1068,82 @@ const championData = {
 
 // Function for obtaining info from Riot's API. First we use the puuid that we have obtained to gain access to the summoner's champion mastery information. We make sure to only get information on their top 3 highest mastery champions. From there, we can get champion key numbers (what i was using to find champion names in the JSON files), champion mastery level and champion mastery points from the api.
 const updateChampMastery = async () => {
-    const apiKey = 'RGAPI-1dded8d1-958d-4639-992b-f967e24d3376'
-    const puuid = summonerPuuid
+  
+  clearRightSideContent()  
+  
+  const apiKey = 'RGAPI-1dded8d1-958d-4639-992b-f967e24d3376'
+  const puuid = summonerPuuid
 
-    let topRight = document.querySelector(`.topRight`)
-    let middleRight = document.querySelector(`.middleRight`)
-    let bottomRight = document.querySelector(`.bottomRight`)
+  let masteryPage = document.querySelector(`.masteryPage`)
+  let topRight = document.querySelector(`.topRight`)
+  let middleRight = document.querySelector(`.middleRight`)
+  let bottomRight = document.querySelector(`.bottomRight`)
 
-    let champName1 = document.querySelector(`.champName1`)
-    let champName2 = document.querySelector(`.champName2`)
-    let champName3 = document.querySelector(`.champName3`)
+  let champName1 = document.querySelector(`.champName1`)
+  let champName2 = document.querySelector(`.champName2`)
+  let champName3 = document.querySelector(`.champName3`)
 
-    let champMasteryLevel1 = document.querySelector(`#champMasteryLevel1`)
-    let champMasteryLevel2 = document.querySelector(`#champMasteryLevel2`)
-    let champMasteryLevel3 = document.querySelector(`#champMasteryLevel3`)
+  let champMasteryLevel1 = document.querySelector(`#champMasteryLevel1`)
+  let champMasteryLevel2 = document.querySelector(`#champMasteryLevel2`)
+  let champMasteryLevel3 = document.querySelector(`#champMasteryLevel3`)
 
-    let champMasteryPoints1 = document.querySelector(`#champMasteryPoints1`)
-    let champMasteryPoints2 = document.querySelector(`#champMasteryPoints2`)
-    let champMasteryPoints3 = document.querySelector(`#champMasteryPoints3`)
+  let champMasteryPoints1 = document.querySelector(`#champMasteryPoints1`)
+  let champMasteryPoints2 = document.querySelector(`#champMasteryPoints2`)
+  let champMasteryPoints3 = document.querySelector(`#champMasteryPoints3`)
 
-    const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
+  const response = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
+  
+  // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my if statement.
+  const firstThreeMasteries = response.data.slice(0, 3)
+  
+  if (firstThreeMasteries.length > 0) {
+    const championMastery1 = firstThreeMasteries[0]
+    const championMastery2 = firstThreeMasteries[1]
+    const championMastery3 = firstThreeMasteries[2]
+
+    const champMasteryKey1 = championMastery1.championId
+    const champMasteryKey2 = championMastery2.championId
+    const champMasteryKey3 = championMastery3.championId
     
-    // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my if statement.
-    const firstThreeMasteries = response.data.slice(0, 3)
+    const championName1 = championData[champMasteryKey1].name
+    const championName2 = championData[champMasteryKey2].name
+    const championName3 = championData[champMasteryKey3].name
     
-    if (firstThreeMasteries.length > 0) {
-        const championMastery1 = firstThreeMasteries[0]
-        const championMastery2 = firstThreeMasteries[1]
-        const championMastery3 = firstThreeMasteries[2]
+    // Make the displays visible
+    masteryPage.style.display = `block`
 
-        const champMasteryKey1 = championMastery1.championId
-        const champMasteryKey2 = championMastery2.championId
-        const champMasteryKey3 = championMastery3.championId
-        
-        const championName1 = championData[champMasteryKey1].name
-        const championName2 = championData[champMasteryKey2].name
-        const championName3 = championData[champMasteryKey3].name
-        
-        // Make the displays visible
-        topRight.style.display = `block`
-        middleRight.style.display = `block`
-        bottomRight.style.display = `block`
+    // Update the backgroundImage of each div with the correct champion photo. Style it to cover
+    topRight.style.backgroundImage = `url(champion/centered/${championName1}_0.jpg)`
+    topRight.style.backgroundSize = 'cover'
+    middleRight.style.backgroundImage = `url(champion/centered/${championName2}_0.jpg)`
+    middleRight.style.backgroundSize = 'cover'
+    bottomRight.style.backgroundImage = `url(champion/centered/${championName3}_0.jpg)`
+    bottomRight.style.backgroundSize = 'cover'
 
-        // Update the backgroundImage of each div with the correct champion photo. Style it to cover
-        topRight.style.backgroundImage = `url(champion/centered/${championName1}_0.jpg)`
-        topRight.style.backgroundSize = 'cover'
-        middleRight.style.backgroundImage = `url(champion/centered/${championName2}_0.jpg)`
-        middleRight.style.backgroundSize = 'cover'
-        bottomRight.style.backgroundImage = `url(champion/centered/${championName3}_0.jpg)`
-        bottomRight.style.backgroundSize = 'cover'
+    // Update the text content to be the correct champion's name
+    champName1.textContent = championData[champMasteryKey1].name
+    champName2.textContent = championData[champMasteryKey2].name
+    champName3.textContent = championData[champMasteryKey3].name
 
-        // Update the text content to be the correct champion's name
-        champName1.textContent = championData[champMasteryKey1].name
-        champName2.textContent = championData[champMasteryKey2].name
-        champName3.textContent = championData[champMasteryKey3].name
+    // Update the text content to be the mastery level that the player has with that champion
+    champMasteryLevel1.textContent = championMastery1.championLevel
+    champMasteryLevel2.textContent = championMastery2.championLevel
+    champMasteryLevel3.textContent = championMastery3.championLevel
 
-        // Update the text content to be the mastery level that the player has with that champion
-        champMasteryLevel1.textContent = championMastery1.championLevel
-        champMasteryLevel2.textContent = championMastery2.championLevel
-        champMasteryLevel3.textContent = championMastery3.championLevel
+    // Update the text content to be the mastery points that the player has with that champion
+    champMasteryPoints1.textContent = championMastery1.championPoints
+    champMasteryPoints2.textContent = championMastery2.championPoints
+    champMasteryPoints3.textContent = championMastery3.championPoints
+  }
+}
 
-        // Update the text content to be the mastery points that the player has with that champion
-        champMasteryPoints1.textContent = championMastery1.championPoints
-        champMasteryPoints2.textContent = championMastery2.championPoints
-        champMasteryPoints3.textContent = championMastery3.championPoints
-    }
+// I need a function that takes me to the champion info page if I click on one of the champion portraits that were pulled up by updateChampMastery.
+function clickOnChamp () {
+  let topRight = document.querySelector(`.topRight`)
+  let middleRight = document.querySelector(`.middleRight`)
+  let bottomRight = document.querySelector(`.bottomRight`)
+
+  
 }
 
 
@@ -1179,7 +1190,11 @@ championSearchInput.addEventListener('keypress', (event) => {
 
 // I want to create a function that checks to see if the value entered into championSearch is equivalent to one of the names in our championData. If the answer is yet, I want the function to make the champion content appear, and update values for the champion name, title, spell names and spell cooldowns. I want it to use the championData to achieve this.
 function searchChampion() {
-    const champName = championSearchInput.value.trim()
+  
+  clearRightSideContent()  
+  
+  const champName = championSearchInput.value.trim()
+    const championPage = document.querySelector(`.championPage`)  
     const capitalizedChampName = champName.charAt(0).toUpperCase() + champName.slice(1)
     const champPageName = document.querySelector(`.champPageName`)
     const champTitle = document.querySelector(`.champTitle`)
@@ -1208,6 +1223,7 @@ function searchChampion() {
 
     // If champion is returned as true, make the championPage content visible, and update the variables.
     if (champion) {
+
         championPage.style.display = `block`
 
         champPageHeader.style.backgroundImage = `url(champion/splash/${capitalizedChampName}_0.jpg)`
@@ -1240,4 +1256,13 @@ function searchChampion() {
     else {
         console.log(`champion not found`)
     }
+}
+
+/*------------------------------------- Clearing the content on the right side before running the functions  -----------------------------------------*/
+
+function clearRightSideContent() {
+  let championPage = document.querySelector(`.championPage`)
+  let masteryPage = document.querySelector(`.masteryPage`)
+  championPage.style.display = `none`
+  masteryPage.style.display = `none`
 }
