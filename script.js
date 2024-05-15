@@ -33,7 +33,7 @@ searchForm.addEventListener('submit', submitSummoner)
 
 /*-------------------------------- Obtaining Summoner's highest mastery champions --------------------------------*/
 
-// Selected data from JSON files. Yes I enetered all of this manually. No it wasn't a good use of time. However, the only ways that I could find to link my functions to this JSON data would have involved more backend server work, and I didn't want to have someone else help me write more backend code that I didn't actually fully understand yet. Only alternative was to create a variable that had all of the data manually inputted.
+// Selected data from JSON files. Yes I enetered all of this manually (sort of, I sent ChatGBT each file individually and asked it to format it this way for me, then had to copy it). No, it wasn't a good use of time. However, the only ways that I found to link my functions to this JSON data would have involved more backend server work, and I didn't want to have someone else help me write more backend code that I didn't actually fully understand yet. Only alternative was to create a variable that had all of the data manually inputted.
 const championData = {
     "266": {"name": "Aatrox","title": "the Darkin Blade","spells": {
           "The Darkin Blade": {
@@ -403,24 +403,234 @@ const championData = {
             }
         }
     },    
-    "516": {
-        "name": "Ornn",
-        "title": "The Fire below the Mountain",
+    "31": {
+        "name": "Cho'Gath",
+        "title": "the Terror of the Void",
         "spells": {
-            "Volcanic Rupture": {
-                "cooldown": [9, 8.5, 8, 7.5, 7]
+            "Rupture": {
+                "cooldown": [6, 6, 6, 6, 6]
             },
-            "Bellows Breath": {
-                "cooldown": [12, 11.5, 11, 10.5, 10]
+            "Feral Scream": {
+                "cooldown": [11, 10.5, 10, 9.5, 9]
             },
-            "Searing Charge": {
-                "cooldown": [14, 13.5, 13, 12.5, 12]
+            "Vorpal Spikes": {
+                "cooldown": [8, 7, 6, 5, 4]
             },
-            "Call of the Forge God": {
-                "cooldown": [140, 120, 100]
+            "Feast": {
+                "cooldown": [80, 70, 60]
             }
         }
     },    
+    "42": {
+        "name": "Corki",
+        "title": "the Daring Bombardier",
+        "spells": {
+            "PhosphorusBomb": {
+                "cooldown": [8, 8, 8, 8, 8]
+            },
+            "CarpetBomb": {
+                "cooldown": [20, 18, 16, 14, 12]
+            },
+            "GGun": {
+                "cooldown": [16, 16, 16, 16, 16]
+            },
+            "MissileBarrage": {
+                "cooldown": [2, 2, 2]
+            }
+        }
+    },    
+    "122": {
+        "name": "Darius",
+        "title": "the Hand of Noxus",
+        "spells": {
+            "DariusCleave": {
+                "cooldown": [9, 8, 7, 6, 5]
+            },
+            "DariusNoxianTacticsONH": {
+                "cooldown": [5, 5, 5, 5, 5]
+            },
+            "DariusAxeGrabCone": {
+                "cooldown": [24, 21.5, 19, 16.5, 14]
+            },
+            "DariusExecute": {
+                "cooldown": [120, 100, 80]
+            }
+        }
+    },    
+    "Diana": {
+        "name": "Diana",
+        "title": "Scorn of the Moon",
+        "spells": {
+            "DianaQ": {
+                "cooldown": [8, 7.5, 7, 6.5, 6]
+            },
+            "DianaOrbs": {
+                "cooldown": [15, 13.5, 12, 10.5, 9]
+            },
+            "DianaTeleport": {
+                "cooldown": [22, 20, 18, 16, 14]
+            },
+            "DianaR": {
+                "cooldown": [100, 90, 80]
+            }
+        }
+    },
+    "Draven": {
+        "name": "Draven",
+        "title": "the Glorious Executioner",
+        "spells": {
+            "DravenSpinning": {
+                "cooldown": [12, 11, 10, 9, 8]
+            },
+            "DravenFury": {
+                "cooldown": [12, 12, 12, 12, 12]
+            },
+            "DravenDoubleShot": {
+                "cooldown": [18, 17, 16, 15, 14]
+            },
+            "DravenRCast": {
+                "cooldown": [100, 90, 80]
+            }
+        }
+    },    
+    "DrMundo": {
+        "name": "Dr. Mundo",
+        "title": "the Madman of Zaun",
+        "spells": {
+            "DrMundoQ": {
+                "cooldown": [4, 4, 4, 4, 4]
+            },
+            "DrMundoW": {
+                "cooldown": [17, 16.5, 16, 15.5, 15]
+            },
+            "DrMundoE": {
+                "cooldown": [9, 8.25, 7.5, 6.75, 6]
+            },
+            "DrMundoR": {
+                "cooldown": [120, 120, 120]
+            }
+        }
+    },    
+    "Ekko": {
+        "name": "Ekko",
+        "title": "the Boy Who Shattered Time",
+        "spells": {
+            "EkkoQ": {
+                "cooldown": [9, 8.5, 8, 7.5, 7]
+            },
+            "EkkoW": {
+                "cooldown": [22, 20, 18, 16, 14]
+            },
+            "EkkoE": {
+                "cooldown": [9, 8.5, 8, 7.5, 7]
+            },
+            "EkkoR": {
+                "cooldown": [110, 80, 50]
+            }
+        }
+    },    
+    "Elise": {
+        "name": "Elise",
+        "title": "the Spider Queen",
+        "spells": {
+            "EliseHumanQ": {
+                "cooldown": [6, 6, 6, 6, 6]
+            },
+            "EliseHumanW": {
+                "cooldown": [12, 12, 12, 12, 12]
+            },
+            "EliseHumanE": {
+                "cooldown": [12, 11.5, 11, 10.5, 10]
+            }
+        }
+    },    
+    "Evelynn": {
+        "name": "Evelynn",
+        "title": "Agony's Embrace",
+        "spells": {
+            "EvelynnQ": {
+                "cooldown": [4, 4, 4, 4, 4]
+            },
+            "EvelynnW": {
+                "cooldown": [15, 14, 13, 12, 11]
+            },
+            "EvelynnE": {
+                "cooldown": [8, 8, 8, 8, 8]
+            }
+        }
+    },    
+    "Ezreal": {
+        "name": "Ezreal",
+        "title": "the Prodigal Explorer",
+        "spells": {
+            "EzrealQ": {
+                "cooldown": [5.5, 5.25, 5, 4.75, 4.5]
+            },
+            "EzrealW": {
+                "cooldown": [8, 8, 8, 8, 8]
+            },
+            "EzrealE": {
+                "cooldown": [26, 23, 20, 17, 14]
+            },
+            "EzrealR": {
+                "cooldown": [120, 105, 90]
+            }
+        }
+    },    
+    "Fiddlesticks": {
+        "name": "Fiddlesticks",
+        "title": "the Ancient Fear",
+        "spells": {
+            "FiddleSticksQ": {
+                "cooldown": [15, 14.5, 14, 13.5, 13]
+            },
+            "FiddleSticksW": {
+                "cooldown": [10, 9.5, 9, 8.5, 8]
+            },
+            "FiddleSticksE": {
+                "cooldown": [10, 9, 8, 7, 6]
+            },
+            "FiddleSticksR": {
+                "cooldown": [140, 110, 80]
+            }
+        }
+    },    
+    "Fiora": {
+        "name": "Fiora",
+        "title": "the Grand Duelist",
+        "spells": {
+            "FioraQ": {
+                "cooldown": [13, 11.25, 9.5, 7.75, 6]
+            },
+            "FioraW": {
+                "cooldown": [24, 22, 20, 18, 16]
+            },
+            "FioraE": {
+                "cooldown": [11, 10, 9, 8, 7]
+            },
+            "FioraR": {
+                "cooldown": [110, 90, 70]
+            }
+        }
+    },
+    "105": {
+        "name": "Fizz",
+        "title": "the Tidal Trickster",
+        "spells": {
+          "Urchin Strike": {
+            "cooldown": [8, 7.5, 7, 6.5, 6]
+          },
+          "Seastone Trident": {
+            "cooldown": [7, 6.5, 6, 5.5, 5]
+          },
+          "Playful / Trickster": {
+            "cooldown": [16, 14, 12, 10, 8]
+          },
+          "Chum the Waters": {
+            "cooldown": [100, 85, 70]
+          }
+        }
+    },          
     "3": {
         "name": "Galio",
         "title": "the Colossus",
@@ -439,6 +649,402 @@ const championData = {
             }
         }
     },
+    "41": {
+        "name": "Gangplank",
+        "title": "the Saltwater Scourge",
+        "spells": {
+          "Parrrley": {
+            "cooldown": [4.5, 4.5, 4.5, 4.5, 4.5]
+          },
+          "Remove Scurvy": {
+            "cooldown": [22, 20, 18, 16, 14]
+          },
+          "Powder Keg": {
+            "cooldown": [0, 0, 0, 0, 0]
+          },
+          "Cannon Barrage": {
+            "cooldown": [170, 150, 130]
+          }
+        }
+      },      
+      "86": {
+        "name": "Garen",
+        "title": "The Might of Demacia",
+        "spells": {
+          "Decisive Strike": {
+            "cooldown": [8, 8, 8, 8, 8]
+          },
+          "Courage": {
+            "cooldown": [23, 21, 19, 17, 15]
+          },
+          "Judgment": {
+            "cooldown": [9, 9, 9, 9, 9]
+          },
+          "Demacian Justice": {
+            "cooldown": [120, 100, 80]
+          }
+        }
+      },      
+      "150": {
+        "name": "Gnar",
+        "title": "the Missing Link",
+        "spells": {
+          "Boomerang Throw / Boulder Toss": {
+            "cooldown": [20, 17.5, 15, 12.5, 10]
+          },
+          "Hyper / Wallop": {
+            "cooldown": [7, 7, 7, 7, 7]
+          },
+          "Hop / Crunch": {
+            "cooldown": [22, 19.5, 17, 14.5, 12]
+          },
+          "GNAR!": {
+            "cooldown": [90, 60, 30]
+          }
+        }
+      },      
+      "79": {
+        "name": "Gragas",
+        "title": "the Rabble Rouser",
+        "spells": {
+          "Barrel Roll": {
+            "cooldown": [10, 9, 8, 7, 6]
+          },
+          "Drunken Rage": {
+            "cooldown": [5, 5, 5, 5, 5]
+          },
+          "Body Slam": {
+            "cooldown": [14, 13.5, 13, 12.5, 12]
+          },
+          "Explosive Cask": {
+            "cooldown": [100, 85, 70]
+          }
+        }
+      },      
+      "104": {
+        "name": "Graves",
+        "title": "the Outlaw",
+        "spells": {
+          "End of the Line": {
+            "cooldown": [13, 11.5, 10, 8.5, 7]
+          },
+          "Smoke Screen": {
+            "cooldown": [26, 24, 22, 20, 18]
+          },
+          "Quickdraw": {
+            "cooldown": [16, 15, 14, 13, 12]
+          },
+          "Collateral Damage": {
+            "cooldown": [100, 80, 60]
+          }
+        }
+      },      
+      "887": {
+        "name": "Gwen",
+        "title": "The Hallowed Seamstress",
+        "spells": {
+          "Snip Snip!": {
+            "cooldown": [6.5, 5.75, 5, 4.25, 3.5]
+          },
+          "Hallowed Mist": {
+            "cooldown": [22, 21, 20, 19, 18]
+          },
+          "Skip 'n Slash": {
+            "cooldown": [13, 12.5, 12, 11.5, 11]
+          },
+          "Needlework": {
+            "cooldown": [120, 100, 80]
+          }
+        }
+      },      
+      "120": {
+        "name": "Hecarim",
+        "title": "the Shadow of War",
+        "spells": {
+          "Rampage": {
+            "cooldown": [4, 4, 4, 4, 4]
+          },
+          "Spirit of Dread": {
+            "cooldown": [16, 15.5, 15, 14.5, 14]
+          },
+          "Devastating Charge": {
+            "cooldown": [18, 18, 18, 18, 18]
+          },
+          "Onslaught of Shadows": {
+            "cooldown": [140, 120, 100]
+          }
+        }
+      },      
+      "74": {
+        "name": "Heimerdinger",
+        "title": "the Revered Inventor",
+        "spells": {
+          "H-28 G Evolution Turret": {
+            "cooldown": [1, 1, 1, 1, 1]
+          },
+          "Hextech Micro-Rockets": {
+            "cooldown": [11, 10, 9, 8, 7]
+          },
+          "CH-2 Electron Storm Grenade": {
+            "cooldown": [11, 11, 11, 11, 11]
+          },
+          "UPGRADE!!!": {
+            "cooldown": [100, 85, 70]
+          }
+        }
+      },      
+      "910": {
+        "name": "Hwei",
+        "title": "the Visionary",
+        "spells": {
+          "Subject: Disaster": {
+            "cooldown": [10, 9, 8, 7, 6]
+          },
+          "Subject: Serenity": {
+            "cooldown": [18, 17.5, 17, 16.5, 16]
+          },
+          "Subject: Torment": {
+            "cooldown": [12, 11.5, 11, 10.5, 10]
+          },
+          "Spiraling Despair": {
+            "cooldown": [140, 115, 80]
+          }
+        }
+      },   
+      "420": {
+        "name": "Illaoi",
+        "title": "the Kraken Priestess",
+        "spells": {
+          "Tentacle Smash": {
+            "cooldown": [10, 9, 8, 7, 6]
+          },
+          "Harsh Lesson": {
+            "cooldown": [4, 4, 4, 4, 4]
+          },
+          "Test of Spirit": {
+            "cooldown": [16, 15, 14, 13, 12]
+          },
+          "Leap of Faith": {
+            "cooldown": [120, 95, 70]
+          }
+        }
+      },         
+      "39": {
+        "name": "Irelia",
+        "title": "the Blade Dancer",
+        "spells": {
+          "Bladesurge": {
+            "cooldown": [11, 10, 9, 8, 7]
+          },
+          "Defiant Dance": {
+            "cooldown": [20, 18, 16, 14, 12]
+          },
+          "Flawless Duet": {
+            "cooldown": [16, 15, 14, 13, 12]
+          },
+          "Vanguard's Edge": {
+            "cooldown": [125, 105, 85]
+          }
+        }
+      },   
+      "427": {
+        "name": "Ivern",
+        "title": "the Green Father",
+        "spells": {
+          "Rootcaller": {
+            "cooldown": [14, 13, 12, 11, 10]
+          },
+          "Brushmaker": {
+            "cooldown": [0.5, 0.5, 0.5, 0.5, 0.5]
+          },
+          "Triggerseed": {
+            "cooldown": [11, 10, 9, 8, 7]
+          },
+          "Daisy!": {
+            "cooldown": [140, 130, 120]
+          }
+        }
+      },         
+      "40": {
+        "name": "Janna",
+        "title": "the Storm's Fury",
+        "spells": {
+          "HowlingGale": {
+            "cooldown": [14, 14, 14, 14, 14]
+          },
+          "SowTheWind": {
+            "cooldown": [8, 7.5, 7, 6.5, 6]
+          },
+          "EyeOfTheStorm": {
+            "cooldown": [16, 15, 14, 13, 12]
+          },
+          "ReapTheWhirlwind": {
+            "cooldown": [130, 115, 100]
+          }
+        }
+      },     
+      "59": {
+        "name": "Jarvan IV",
+        "title": "the Exemplar of Demacia",
+        "spells": {
+          "JarvanIVDragonStrike": {
+            "cooldown": [10, 9, 8, 7, 6]
+          },
+          "JarvanIVGoldenAegis": {
+            "cooldown": [9, 9, 9, 9, 9]
+          },
+          "JarvanIVDemacianStandard": {
+            "cooldown": [12, 11.5, 11, 10.5, 10]
+          },
+          "JarvanIVCataclysm": {
+            "cooldown": [120, 105, 90]
+          }
+        }
+      },     
+      "24": {
+        "name": "Jax",
+        "title": "Grandmaster at Arms",
+        "spells": {
+          "JaxQ": {
+            "cooldown": [8, 7.5, 7, 6.5, 6]
+          },
+          "JaxW": {
+            "cooldown": [7, 6, 5, 4, 3]
+          },
+          "JaxE": {
+            "cooldown": [15, 13.5, 12, 10.5, 9]
+          },
+          "JaxR": {
+            "cooldown": [100, 90, 80]
+          }
+        }
+      },  
+      "126": {
+        "name": "Jayce",
+        "title": "the Defender of Tomorrow",
+        "spells": {
+          "JayceToTheSkies": {
+            "cooldown": [16, 14, 12, 10, 8, 6]
+          },
+          "JayceStaticField": {
+            "cooldown": [10, 10, 10, 10, 10, 10]
+          },
+          "JayceThunderingBlow": {
+            "cooldown": [20, 18, 16, 14, 12, 10]
+          },
+          "JayceStanceHtG": {
+            "cooldown": [6]
+          }
+        }
+      },    
+      "202": {
+        "name": "Jhin",
+        "title": "the Virtuoso",
+        "spells": {
+          "JhinQ": {
+            "cooldown": [7, 6.5, 6, 5.5, 5]
+          },
+          "JhinW": {
+            "cooldown": [12, 12, 12, 12, 12]
+          },
+          "JhinE": {
+            "cooldown": [2, 2, 2, 2, 2]
+          },
+          "JhinR": {
+            "cooldown": [120, 105, 90]
+          }
+        }
+      },    
+      "222": {
+        "name": "Jinx",
+        "title": "the Loose Cannon",
+        "spells": {
+          "JinxQ": {
+            "cooldown": [0.9, 0.9, 0.9, 0.9, 0.9]
+          },
+          "JinxW": {
+            "cooldown": [8, 7, 6, 5, 4]
+          },
+          "JinxE": {
+            "cooldown": [24, 20.5, 17, 13.5, 10]
+          },
+          "JinxR": {
+            "cooldown": [85, 65, 45]
+          }
+        }
+      },      
+      "145": {
+        "name": "Kai'Sa",
+        "title": "Daughter of the Void",
+        "spells": {
+          "KaisaQ": {
+            "cooldown": [10, 9, 8, 7, 6]
+          },
+          "KaisaW": {
+            "cooldown": [22, 20, 18, 16, 14]
+          },
+          "KaisaE": {
+            "cooldown": [16, 14.5, 13, 11.5, 10]
+          },
+          "KaisaR": {
+            "cooldown": [130, 100, 70]
+          }
+        }
+      },         
+      "429": {
+        "name": "Kalista",
+        "title": "the Spear of Vengeance",
+        "spells": {
+          "KalistaMysticShot": {
+            "cooldown": [8, 8, 8, 8, 8]
+          },
+          "KalistaW": {
+            "cooldown": [30, 30, 30, 30, 30]
+          },
+          "KalistaExpungeWrapper": {
+            "cooldown": [0, 0, 0, 0, 0]
+          },
+          "KalistaRx": {
+            "cooldown": [150, 120, 90]
+          }
+        }
+      },    
+      "43": {
+        "name": "Karma",
+        "title": "the Enlightened One",
+        "spells": {
+          "KarmaQ": {
+            "cooldown": [9, 8, 7, 6, 5]
+          },
+          "KarmaSpiritBind": {
+            "cooldown": [12, 12, 12, 12, 12]
+          },
+          "KarmaSolKimShield": {
+            "cooldown": [10, 9.5, 9, 8.5, 8]
+          },
+          "KarmaMantra": {
+            "cooldown": [40, 38, 36, 34]
+          }
+        }
+      },               
+    "516": {
+        "name": "Ornn",
+        "title": "The Fire below the Mountain",
+        "spells": {
+            "Volcanic Rupture": {
+                "cooldown": [9, 8.5, 8, 7.5, 7]
+            },
+            "Bellows Breath": {
+                "cooldown": [12, 11.5, 11, 10.5, 10]
+            },
+            "Searing Charge": {
+                "cooldown": [14, 13.5, 13, 12.5, 12]
+            },
+            "Call of the Forge God": {
+                "cooldown": [140, 120, 100]
+            }
+        }
+    },    
     "98": {
         "name": "Shen",
         "title": "the Eye of Twilight",
@@ -457,12 +1063,12 @@ const championData = {
             }
         }
     }
-  }
+}
 
-  
+
 // Function for obtaining info from Riot's API. First we use the puuid that we have obtained to gain access to the summoner's champion mastery information. We make sure to only get information on their top 3 highest mastery champions. From there, we can get champion key numbers (what i was using to find champion names in the JSON files), champion mastery level and champion mastery points from the api.
 const updateChampMastery = async () => {
-    const apiKey = 'RGAPI-dca6b402-8c2d-45c7-be01-22e18a0f9d02'
+    const apiKey = 'RGAPI-1dded8d1-958d-4639-992b-f967e24d3376'
     const puuid = summonerPuuid
 
     let topRight = document.querySelector(`.topRight`)
@@ -532,7 +1138,7 @@ const updateChampMastery = async () => {
 
 /*-------------------------------- Champion Name Search --------------------------------*/
 
-// Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus. We used a nice 1 line ternary which make the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked. Also, I needed to include a listener for when someone clicks outside of the dropdownMenu area, making it dissapear.
+// Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus. We used a nice one line ternary which make the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked. Also, I needed to include a listener for when someone clicks outside of the dropdownMenu area, making it dissapear.
 const arrow = document.querySelector(`.arrow`)
 const dropdownMenu = document.getElementById('dropdownMenu')
 

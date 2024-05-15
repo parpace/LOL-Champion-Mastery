@@ -10,6 +10,7 @@ body {
     flex: 1;
     border-radius: 50px;
     background-color: blue;
+    display: none;
 }
 
 .topRight, .middleRight, .bottomRight {
