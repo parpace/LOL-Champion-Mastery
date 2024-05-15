@@ -6,13 +6,6 @@ body {
     padding: 0;
 }
 
-.championPage {
-    flex: 1;
-    border-radius: 50px;
-    background-color: blue;
-    display: none;
-}
-
 .topRight, .middleRight, .bottomRight {
     flex: 1;
     height: 33.33vh;
@@ -78,6 +71,139 @@ h2 {
 .search-bar-container {
     position: relative;
     display: inline-block; 
+}
+
+.rightSide .champName1,
+.rightSide .champName2,
+.rightSide .champName3 {
+    text-align: center;
+    font-size: 45px;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+
+}
+
+.champMastery {
+    display: flex;
+    justify-content: space-around;
+}
+
+.level, .mastery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    white-space: nowrap;
+    padding-top: 5%;
+    font-size: 130%;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.championPage {
+    flex: 1;
+    border-radius: 50px;
+    display: none;
+    background-color: rgba(51, 51, 51, 0.95);
+}
+
+.champPageHeader {
+    border: 3px solid black;
+    border-top-left-radius: 43px;
+    border-top-right-radius: 43px;
+    border-style: ridge;
+    padding-bottom: 10%;
+}
+
+.champPageName {
+    text-align: center;
+    font-size: 75px;
+    margin-top: 6%;
+    margin-bottom: 0;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+    padding-top: 3%;
+}
+
+.champTitle {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 0;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.abilities {
+    padding-left: 10px;
+    margin-bottom: 0;
+    margin-top: 5px;
+    font-size: 28px;
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.spells {
+    display: flex;
+    flex-direction: column;
+}
+
+.qSpell, .wSpell, .eSpell, .rSpell {
+    display: flex;
+    justify-content: space-around;
+    border: 3px solid black;
+    border-radius: 20px;
+    border-style: ridge;
+}
+
+.qSpellInfo, .wSpellInfo, .eSpellInfo, .rSpellInfo {
+    color: #fff;
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.spellName1, .spellName2, .spellName3, .spellName4 {
+    font-size: 30px;
+}
+
+.cooldownContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cooldown {
+    font-size: 30px;
+}
+
+.spell1Cooldown, .spell2Cooldown, .spell3Cooldown, .spell4Cooldown {
+    font-size: 20px;
 }
 
 .arrow {
@@ -180,130 +306,4 @@ h2 {
 
 .dropdownMenu a:hover {
     background-color: rgba(0, 191, 255, 0.5);
-}
-
-.rightSide .champName1,
-.rightSide .champName2,
-.rightSide .champName3 {
-    text-align: center;
-    font-size: 45px;
-    margin-top: 0;
-    color: #fff;
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-
-}
-
-.champMastery {
-    display: flex;
-    justify-content: space-around;
-}
-
-.level, .mastery {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    white-space: nowrap;
-    padding-top: 5%;
-    font-size: 130%;
-    color: #fff;
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-}
-
-.champPageName {
-    text-align: center;
-    font-size: 45px;
-    margin-top: 0;
-    color: #fff;
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-        padding-top: 3%;
-}
-
-.champTitle {
-    text-align: center;
-    font-size: 35px;
-    margin-top: 0;
-    color: #fff;
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-}
-
-.abilities {
-    text-align: center;
-    font-size: 35px;
-    color: #fff;
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-    padding-top: 3%;
-}
-
-.spells {
-    display: flex;
-    flex-direction: column;
-}
-
-.qSpell, .wSpell, .eSpell, .rSpell {
-    display: flex;
-    justify-content: space-around;
-    border: 3px solid black;
-    border-radius: 20px;
-    border-style: ridge;
-}
-
-.qSpell h2, .wSpell h2, .eSpell h2, .rSpell h2 {
-    font-size: 50px;
-    color: #fff;
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-}
-
-.qSpellInfo, .wSpellInfo, .eSpellInfo, .rSpellInfo {
-    color: #fff;
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.spellName1, .spellName2, .spellName3, .spellName4 {
-    font-size: 30px;
-}
-
-.cooldownContainer {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.cooldown {
-    font-size: 30px;
-}
-
-.spell1Cooldown, .spell2Cooldown, .spell3Cooldown, .spell4Cooldown {
-    font-size: 20px;
 }

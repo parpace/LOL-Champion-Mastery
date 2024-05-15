@@ -1183,6 +1183,12 @@ function searchChampion() {
     const capitalizedChampName = champName.charAt(0).toUpperCase() + champName.slice(1)
     const champPageName = document.querySelector(`.champPageName`)
     const champTitle = document.querySelector(`.champTitle`)
+    const champPageHeader = document.querySelector(`.champPageHeader`)
+
+    let qSpellImg = document.querySelector(`.qSpellImg`)
+    let wSpellImg = document.querySelector(`.wSpellImg`)
+    let eSpellImg = document.querySelector(`.eSpellImg`)
+    let rSpellImg = document.querySelector(`.rSpellImg`)
 
     const spellName1 = document.querySelector(`.spellName1`)
     const spellName2 = document.querySelector(`.spellName2`)
@@ -1203,11 +1209,21 @@ function searchChampion() {
     // If champion is returned as true, make the championPage content visible, and update the variables.
     if (champion) {
         championPage.style.display = `block`
-        championPage.style.backgroundImage = `url(champion/loading/${capitalizedChampName}_0.jpg)`
-        championPage.style.backgroundSize = `cover`
+        
+        champPageHeader.style.backgroundImage = `url(champion/splash/${capitalizedChampName}_0.jpg)`
+        champPageHeader.style.backgroundSize = `cover`
 
         champPageName.textContent = championData[champion].name
         champTitle.textContent = championData[champion].title
+
+        qSpellImg.src = `spell/${capitalizedChampName}Q.png`
+        qSpellImg.alt = `${capitalizedChampName} Q`
+        wSpellImg.src = `spell/${capitalizedChampName}W.png`
+        wSpellImg.alt = `${capitalizedChampName} W`
+        eSpellImg.src = `spell/${capitalizedChampName}E.png`
+        eSpellImg.alt = `${capitalizedChampName} E`
+        rSpellImg.src = `spell/${capitalizedChampName}R.png`
+        rSpellImg.alt = `${capitalizedChampName} R`
 
         spellName1.textContent = Object.keys(championData[champion].spells)[0]
         spellName2.textContent = Object.keys(championData[champion].spells)[1]
