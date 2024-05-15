@@ -1209,12 +1209,12 @@ function searchChampion() {
     // If champion is returned as true, make the championPage content visible, and update the variables.
     if (champion) {
         championPage.style.display = `block`
-        
+
         champPageHeader.style.backgroundImage = `url(champion/splash/${capitalizedChampName}_0.jpg)`
         champPageHeader.style.backgroundSize = `cover`
 
         champPageName.textContent = championData[champion].name
-        champTitle.textContent = championData[champion].title
+        champTitle.textContent = `"${championData[champion].title}"`
 
         qSpellImg.src = `spell/${capitalizedChampName}Q.png`
         qSpellImg.alt = `${capitalizedChampName} Q`
