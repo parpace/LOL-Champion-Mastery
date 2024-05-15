@@ -10,7 +10,7 @@ body {
     flex: 1;
     border-radius: 50px;
     background-color: blue;
-    display: none;
+    /* display: none; */
 }
 
 .topRight, .middleRight, .bottomRight {
@@ -245,14 +245,13 @@ h2 {
 .abilities {
     text-align: center;
     font-size: 35px;
-    margin-top: 0;
     color: #fff;
     text-shadow: 
         -1px -1px 0 black,  
         1px -1px 0 black,
         -1px 1px 0 black,
         1px 1px 0 black;
-    padding-top: 5%;
+    padding-top: 3%;
 }
 
 .spells {
@@ -269,4 +268,12 @@ h2 {
 
 .qSpell h2, .wSpell h2, .eSpell h2, .rSpell h2 {
     font-size: 50px;
+}
+
+.spellName1, .spellName2, .spellName3, .spellName4 {
+    font-size: 30px;
+}
+
+.cooldown {
+    font-size: 30px;
 }

@@ -1138,7 +1138,7 @@ const updateChampMastery = async () => {
 
 /*-------------------------------- Champion Name Search --------------------------------*/
 
-// Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus. We used a nice one line ternary which make the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked. Also, I needed to include a listener for when someone clicks outside of the dropdownMenu area, making it dissapear.
+// Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus. We used a nice one line ternary which commands the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked. Also, I needed to include a listener for when someone clicks outside of the dropdownMenu area, making it dissapear.
 const arrow = document.querySelector(`.arrow`)
 const dropdownMenu = document.getElementById('dropdownMenu')
 
@@ -1167,10 +1167,25 @@ dropdownOptions.forEach(option => {
     })
 })
 
+// If the user types in a champion and clicks enter, run searchChampion
+championSearchInput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+        searchChampion(event)
+    }
+})
+
 
 // Function and event listeners for champion-search input. Run searchChampion when the enter key is pressed
 function searchChampion() {
     const champName = championSearchInput.value
+    const champPageName = document.querySelector(`.champPageName`)
+
+
+    const champTitle = document.querySelector(`.champTitle`)
+
+    const 
+
+    champPageName.textContent = champName
     console.log('Champ name =', champName)
 }
 
