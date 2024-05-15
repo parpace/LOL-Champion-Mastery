@@ -1170,27 +1170,56 @@ dropdownOptions.forEach(option => {
 // If the user types in a champion and clicks enter, run searchChampion
 championSearchInput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
-        searchChampion(event)
-    }
-})
-
-
-// Function and event listeners for champion-search input. Run searchChampion when the enter key is pressed
-function searchChampion() {
-    const champName = championSearchInput.value
-    const champPageName = document.querySelector(`.champPageName`)
-
-
-    const champTitle = document.querySelector(`.champTitle`)
-
-    const 
-
-    champPageName.textContent = champName
-    console.log('Champ name =', champName)
-}
-
-championSearchInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
         searchChampion()
     }
 })
+
+
+// I want to create a function that checks to see if the value entered into championSearch is equivalent to one of the names in our championData. If the answer is yet, I want the function to make the champion content appear, and update values for the champion name, title, spell names and spell cooldowns. I want it to use the championData to achieve this.
+function searchChampion() {
+    const champName = championSearchInput.value.trim()
+    const capitalizedChampName = champName.charAt(0).toUpperCase() + champName.slice(1)
+    const champPageName = document.querySelector(`.champPageName`)
+    const champTitle = document.querySelector(`.champTitle`)
+
+    const spellName1 = document.querySelector(`.spellName1`)
+    const spellName2 = document.querySelector(`.spellName2`)
+    const spellName3 = document.querySelector(`.spellName3`)
+    const spellName4 = document.querySelector(`.spellName4`)
+
+    const spell1Cooldown = document.querySelector(`.spell1Cooldown`)
+    const spell2Cooldown = document.querySelector(`.spell2Cooldown`)
+    const spell3Cooldown = document.querySelector(`.spell3Cooldown`)
+    const spell4Cooldown = document.querySelector(`.spell4Cooldown`)
+
+    // Checking to see if the championSearchInput.value matches a champion inside of our championData. I had to look up a way of doing this. I found that you can make a variable equivalent to the items in an object. Then, we can make another variable that is a boolean. this boolean checks if the "name" inside of one of the items in our object of championData is equivalent to the search value that the user inputted. I also learned that I need to set both to lowercase so that they are not case sensitive.
+    const championKeys = Object.keys(championData)
+    const champion = championKeys.find(keyNumber=> {
+        return championData[keyNumber].name.toLowerCase() === champName.toLowerCase()
+    })
+
+    // If champion is returned as true, make the championPage content visible, and update the variables.
+    if (champion) {
+        championPage.style.display = `block`
+        championPage.style.backgroundImage = `url(champion/loading/${capitalizedChampName}_0.jpg)`
+        championPage.style.backgroundSize = `cover`
+
+        champPageName.textContent = championData[champion].name
+        champTitle.textContent = championData[champion].title
+
+        spellName1.textContent = Object.keys(championData[champion].spells)[0]
+        spellName2.textContent = Object.keys(championData[champion].spells)[1]
+        spellName3.textContent = Object.keys(championData[champion].spells)[2]
+        spellName4.textContent = Object.keys(championData[champion].spells)[3]
+
+        // This stumped me for a long time. I need to access the object of spellName1 in order to get the array of the cooldown inside of it. Eventually I found that you can use object.keys inside of the spells object, just like I did above. I didnt like the commas inbetween the cooldown numbers, so I made it a '/' instead.
+        spell1Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[0]].cooldown.join(' / ')
+        spell2Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[1]].cooldown.join(' / ')
+        spell3Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[2]].cooldown.join(' / ')
+        spell4Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[3]].cooldown.join(' / ')
+
+    }
+    else {
+        console.log(`champion not found`)
+    }
+}
