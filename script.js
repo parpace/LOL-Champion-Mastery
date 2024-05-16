@@ -1071,7 +1071,7 @@ const updateChampMastery = async () => {
   
   clearRightSideContent()  
   
-  const apiKey = 'RGAPI-1dded8d1-958d-4639-992b-f967e24d3376'
+  const apiKey = 'RGAPI-0756ec8c-c305-4be3-abef-4a175713a2d4'
   const puuid = summonerPuuid
 
   let masteryPage = document.querySelector(`.masteryPage`)
@@ -1138,14 +1138,33 @@ const updateChampMastery = async () => {
 }
 
 // I need a function that takes me to the champion info page if I click on one of the champion portraits that were pulled up by updateChampMastery.
-function clickOnChamp () {
-  let topRight = document.querySelector(`.topRight`)
-  let middleRight = document.querySelector(`.middleRight`)
-  let bottomRight = document.querySelector(`.bottomRight`)
+// const masteryPage = document.querySelector(`.masteryPage`)
+let championSearchInput = document.querySelector('#championSearch')
 
-  
-}
+// masteryPage.addEventListener(`click`, function(event) {
+//   let champName1 = document.querySelector(`.champName1`)
+//   let champName2 = document.querySelector(`.champName2`)
+//   let champName3 = document.querySelector(`.champName3`)
 
+//   if (event.target.matches(`.topRight`)) {
+//     championSearchInput = champName1
+//     searchChampion()
+//   } else if (event.target.matches(`.middleRight`)) {
+//     championSearchInput = champName2
+//     searchChampion()
+//   } else if (event.target.matches(`.bottomRight`)) {
+//     championSearchInput = champName3
+//     searchChampion()
+//   }
+// })
+
+const topRight = document.querySelector(`.topRight`)
+topRight.addEventListener(`click`, () => {
+  let champName1 = document.querySelector(`.champName1`)
+  championSearchInput.textContent = champName1
+  console.log(championSearchInput)
+  searchChampion()
+})
 
 /*-------------------------------------- Champion Name Search ----------------------------------------*/
 
@@ -1166,7 +1185,6 @@ document.addEventListener('click', function(event) {
 
 // Update the text and run searchChampion when one of the dropdown menu items is clicked. Also clear the dropdown display
 const dropdownOptions = document.querySelectorAll('.dropdownMenu a')
-const championSearchInput = document.querySelector('#championSearch')
 
 dropdownOptions.forEach(option => {
     option.addEventListener('click', () => {
