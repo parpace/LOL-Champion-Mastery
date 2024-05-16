@@ -1072,7 +1072,7 @@ const updateChampMastery = async () => {
   clearRightSideContent()  
   
   const summonerName = document.querySelector(`.summonerName`)
-  // const summonerIcon = document.querySelector(`.summonerIcon`)
+  const summonerIcon = document.querySelector(`.summonerIcon`)
 
   const apiKey = 'RGAPI-0756ec8c-c305-4be3-abef-4a175713a2d4'
   const puuid = summonerPuuid
@@ -1096,7 +1096,7 @@ const updateChampMastery = async () => {
 
   const champMasteryResponse = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
 
-  // const summonerIconResponse = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
+  const summonerIconResponse = await axios.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${apiKey}`)
   
   // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my if statement.
   const firstThreeMasteries = champMasteryResponse.data.slice(0, 3)
@@ -1120,9 +1120,9 @@ const updateChampMastery = async () => {
     // Update summonerName to be the searchInput value and capitalize first letter
     summonerName.textContent = searchInput.value.charAt(0).toUpperCase() + searchInput.value.slice(1)
 
-    // Update summonerIcon
-    // let summonerIconId = summonerIconResponse.data.profileIconId
-    // summonerIcon = 
+    // Update summonerIcon by grabbing the profileIconId from the api and then referencing it to the profileicon images
+    let summonerIconId = summonerIconResponse.data.profileIconId
+    summonerIcon.src = `profileicon/${summonerIconId}.png`
 
     // Update the backgroundImage of each div with the correct champion photo. Style it to cover
     topRight.style.backgroundImage = `url(champion/centered/${championName1}_0.jpg)`
