@@ -1286,19 +1286,37 @@ function clearRightSideContent() {
 
 /*------------------------------------- Cycle through background images  -----------------------------------------*/
 
-const images = ['champion/splash/Zed_13.jpg', `champion/splash/Jinx_37.jpg`, `champion/splash/Fiora_31.jpg`, `champion/splash/XinZhao_20.jpg`, 'champion/splash/Zed_13.jpg', `champion/splash/Yone_19.jpg`, `champion/splash/Zed_10.jpg`, `champion/splash/Jayce_24.jpg`]
-const timeInterval = 8000
+const images = [`champion/splash/Jinx_37.jpg`, `champion/splash/Fiora_31.jpg`, `champion/splash/XinZhao_20.jpg`, 'champion/splash/Zed_13.jpg', `champion/splash/Yone_19.jpg`, `champion/splash/Zed_10.jpg`, `champion/splash/Jayce_24.jpg`, `champion/splash/Zed_13.jpg` ]
+const fadeInDuration = 2000 // This is in milliseconds
+const fadeOutDuration = 2000
+const timeInterval = 6000
+const body = document.body
 
 let index = 0
 
-function changeBackground() {
-  document.querySelector('.backgroundImage').style.backgroundImage = `url(${images[index]})`
-  // I need index to increase the index by 1 to move to the next item in the array. However, it needs to loop once it reaches the end. Using modulus, we can make sure that the index always equals the next item in the array until it reaches the images.length, in which case it will equal 0 and restart the loop.
-  index = (index + 1) % images.length
+function fadeIn(duration) {
+  body.style.transition = `background-image ${duration}ms`
 }
-// I had trouble with this for a while. I couldn't get the background image to show up on page load, it would the timeInterval for the first image to display. I'm sure there is a more elegant way to do this, but it works.
-document.addEventListener('DOMContentLoaded', () => {
-  changeBackground()
-})
-// Happy I found this
+
+function fadeOut(duration) {
+  body.style.transition = `background-image ${duration}ms`
+}
+
+// I need to make the background image equal to the next image in the array. I need to increase the index by 1 to move to the next item. However, it needs to loop once it reaches the end. Using modulus, we can make sure that the index always equals the next item in the array until it reaches the images.length, in which case it will equal 0 and restart the loop.
+function changeBackground() {
+  fadeOut(fadeOutDuration)
+  setTimeout( () => {
+    body.style.backgroundImage = `url(${images[index]})`
+    fadeIn(fadeInDuration)
+    index = (index + 1) % images.length
+  }, fadeOutDuration)
+}
+
+// Set the initial backgroundImage
+body.style.backgroundImage = `url(champion/splash/Zed_13.jpg)`
+fadeIn(fadeInDuration)
+
+// Start rotating background images
 setInterval(changeBackground, timeInterval)
+
+
