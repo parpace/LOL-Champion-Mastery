@@ -14,6 +14,17 @@ body {
     flex: 1;
     height: 33.33vh;
     border-radius: 30px;
+    border: 2px solid transparent;
+    border-style: ridge;
+    border-color: rgba(255, 255, 255, 0.4);
+    transition: box-shadow 0.4s ease, cursor 0.4s ease;
+}
+
+.topRight:hover, .middleRight:hover, .bottomRight:hover {
+  box-shadow: 0 0 10px 2px #ffec99,
+              0 0 20px 5px #ffec99,
+              0 0 40px 5px #ffec99;
+  cursor: pointer;
 }
 
 .container {

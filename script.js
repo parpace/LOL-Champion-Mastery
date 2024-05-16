@@ -1138,33 +1138,32 @@ const updateChampMastery = async () => {
 }
 
 // I need a function that takes me to the champion info page if I click on one of the champion portraits that were pulled up by updateChampMastery.
-// const masteryPage = document.querySelector(`.masteryPage`)
 let championSearchInput = document.querySelector('#championSearch')
 
-// masteryPage.addEventListener(`click`, function(event) {
-//   let champName1 = document.querySelector(`.champName1`)
-//   let champName2 = document.querySelector(`.champName2`)
-//   let champName3 = document.querySelector(`.champName3`)
-
-//   if (event.target.matches(`.topRight`)) {
-//     championSearchInput = champName1
-//     searchChampion()
-//   } else if (event.target.matches(`.middleRight`)) {
-//     championSearchInput = champName2
-//     searchChampion()
-//   } else if (event.target.matches(`.bottomRight`)) {
-//     championSearchInput = champName3
-//     searchChampion()
-//   }
-// })
-
-const topRight = document.querySelector(`.topRight`)
-topRight.addEventListener(`click`, () => {
+function clickChampion () {
   let champName1 = document.querySelector(`.champName1`)
-  championSearchInput.textContent = champName1
-  console.log(championSearchInput)
+  let champName2 = document.querySelector(`.champName2`)
+  let champName3 = document.querySelector(`.champName3`)
+  const topRight = document.querySelector(`.topRight`)
+  const middleRight = document.querySelector(`.middleRight`)
+  const bottomRight = document.querySelector(`.bottomRight`)
+
+  topRight.addEventListener(`click`, () => {
+  championSearchInput.value = champName1.textContent
   searchChampion()
-})
+  })
+
+  middleRight.addEventListener(`click`, () => {
+    championSearchInput.value = champName2.textContent
+    searchChampion()
+  })
+
+  bottomRight.addEventListener(`click`, () => {
+    championSearchInput.value = champName3.textContent
+    searchChampion()
+  })
+}
+clickChampion()
 
 /*-------------------------------------- Champion Name Search ----------------------------------------*/
 
