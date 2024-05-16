@@ -109,13 +109,29 @@ h2 {
     display: inline-block; 
 }
 
+.masteryHeader {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .summonerName{
+    font-size: 50px;
+    margin: 1%;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 
         -1px -1px 0 black,  
         1px -1px 0 black,
         -1px 1px 0 black,
         1px 1px 0 black;
+}
+
+.summonerIcon {
+    margin-top: 0;
+    width: 60px;
+    height: auto;
+    padding-right: 10px;
 }
 
 .rightSide .champName1,
