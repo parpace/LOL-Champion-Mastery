@@ -7,26 +7,26 @@ const searchInput = document.querySelector('#summonerSearch')
 let summonerPuuid = ``
 
 const submitSummoner = async (event) => {
-    event.preventDefault()
+  event.preventDefault()
 
-    const summonerName = searchInput.value
+  const summonerName = searchInput.value
 
-    try {
-        const response = await fetch(`http://127.0.0.1:3000/summoner?name=${summonerName}`)
-        const data = await response.json()
+  try {
+    const response = await fetch(`http://127.0.0.1:3000/summoner?name=${summonerName}`)
+    const data = await response.json()
 
-        summonerPuuid = data.puuid
-
-        await updateChampMastery()
-    } catch (error) {
-        console.error('Failed to fetch summoner PUUID:', error)
-        }
+    summonerPuuid = data.puuid
+    console.log(summonerPuuid)
+    await updateChampMastery()
+  } catch (error) {
+    console.error('Failed to fetch summoner PUUID:', error)
+  }
 }
 
 searchInput.addEventListener('keypress', (event) => {
-    if (event.key === 'Enter') {
-        submitSummoner(event)
-    }
+  if (event.key === 'Enter') {
+      submitSummoner(event)
+  }
 })
 searchForm.addEventListener('submit', submitSummoner)
 
@@ -1283,3 +1283,22 @@ function clearRightSideContent() {
   championPage.style.display = `none`
   masteryPage.style.display = `none`
 }
+
+/*------------------------------------- Cycle through background images  -----------------------------------------*/
+
+const images = ['champion/splash/Zed_13.jpg', `champion/splash/Jinx_37.jpg`, `champion/splash/Fiora_31.jpg`, `champion/splash/XinZhao_20.jpg`, 'champion/splash/Zed_13.jpg', `champion/splash/Yone_19.jpg`, `champion/splash/Zed_10.jpg`, `champion/splash/Jayce_24.jpg`]
+const timeInterval = 8000
+
+let index = 0
+
+function changeBackground() {
+  document.querySelector('.backgroundImage').style.backgroundImage = `url(${images[index]})`
+  // I need index to increase the index by 1 to move to the next item in the array. However, it needs to loop once it reaches the end. Using modulus, we can make sure that the index always equals the next item in the array until it reaches the images.length, in which case it will equal 0 and restart the loop.
+  index = (index + 1) % images.length
+}
+// I had trouble with this for a while. I couldn't get the background image to show up on page load, it would the timeInterval for the first image to display. I'm sure there is a more elegant way to do this, but it works.
+document.addEventListener('DOMContentLoaded', () => {
+  changeBackground()
+})
+// Happy I found this
+setInterval(changeBackground, timeInterval)
