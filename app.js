@@ -11,7 +11,7 @@ app.use(cors())
 
 app.get('/summoner', async (req, res) => {
     try {
-        const apiKey = 'RGAPI-0756ec8c-c305-4be3-abef-4a175713a2d4'
+        const apiKey = 'RGAPI-c1d3b7a2-d988-49f8-8d4f-3616996b743c'
         const summonerName = req.query.name
 
         const apiUrl = `https://americas.api.riotgames.com/riot/account/v1/accounts/by-riot-id/${summonerName}/na1?api_key=${apiKey}`

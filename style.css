@@ -6,15 +6,32 @@ body {
 }
 .masteryPage {
     display: none;
-}
-
-.topRight, .middleRight, .bottomRight {
-    flex: 1;
-    height: 33.33vh;
-    border-radius: 30px;
+    background-color: rgba(51, 51, 51, 0.95);
+    border-radius: 50px;
     border: 2px solid transparent;
     border-style: ridge;
     border-color: rgba(255, 255, 255, 0.4);
+}
+
+.topRight, .middleRight {
+    flex: 1;
+    height: 28vh;
+    border: 2px solid transparent;
+    border-style: ridge;
+    border-color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 5px;
+    transition: box-shadow 0.4s ease, cursor 0.4s ease;
+}
+
+.bottomRight {
+    flex: 1;
+    height: 29vh;
+    border: 2px solid transparent;
+    border-style: ridge;
+    border-color: rgba(255, 255, 255, 0.4);
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    margin-bottom: 0;
     transition: box-shadow 0.4s ease, cursor 0.4s ease;
 }
 
@@ -27,13 +44,17 @@ body {
 
 .container {
     display: flex;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
+    margin-right: 50px;
+    margin-bottom: 10px;
+    margin-top: 5px;
     height: 100vh;
 }
 
 .leftSide {
     flex: 1;
+    padding-left: 10%;
 }
 
 .rightSide {
@@ -42,20 +63,11 @@ body {
     flex-direction: column;
 }
 
-.lolgg {
-    padding-left: 14%;
-    padding-top: 1%;
-    color: rgba(255, 255, 255, 0.9);
-    text-shadow: 
-        -1px -1px 0 black,  
-        1px -1px 0 black,
-        -1px 1px 0 black,
-        1px 1px 0 black;
-}
-
 .league {
+    font-size: 60px;
+    margin-bottom: 0;
     padding-left: 5%;
-    padding-top: 2%;
+    padding-top: 3%;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 
         -1px -1px 0 black,  
@@ -64,10 +76,12 @@ body {
         1px 1px 0 black;
 }
 
-.championMastery {
-    padding-left: 4%;
+.legends {
+    font-size: 60px;
+    margin-top: 0;
+    padding-left: 7%;
     padding-bottom: 2%;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255, 255, 255, 0.9);
     text-shadow: 
         -1px -1px 0 black,  
         1px -1px 0 black,
@@ -76,8 +90,9 @@ body {
 }
 
 h2 {
-    padding-left: 3%;
+    padding-left: .5%;
     margin-bottom: 0;
+    margin-top: 0;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 
         -1px -1px 0 black,  
@@ -87,12 +102,12 @@ h2 {
 }
 
 #summonerSearch {
-    width: 50%;
+    width: 300px;
     height: 40px;
     background: linear-gradient(to right, white, deepskyblue);
     border-radius: 20px;
     padding: 0 10px;
-    margin-bottom: 4%;
+    margin-bottom: 6%;
 }
 
 #championSearch {
@@ -110,14 +125,35 @@ h2 {
 }
 
 .masteryHeader {
+    margin-top: 0;
+    padding: 10px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(51, 51, 51, 0.95);
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+    border: 2px solid transparent;
+    border-style: ridge;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+.summonerInfo {
+    display: flex;
     align-items: center;
 }
 
+.summonerIcon {
+    padding-left: 3%;
+    padding-right: 3%;
+    width: 70px;
+    height: auto;
+    border-radius: 15px;
+}
+
 .summonerName{
-    font-size: 50px;
+    font-size: 30px;
     margin: 1%;
     color: rgba(255, 255, 255, 0.9);
     text-shadow: 
@@ -127,11 +163,21 @@ h2 {
         1px 1px 0 black;
 }
 
-.summonerIcon {
-    margin-top: 0;
-    width: 60px;
-    height: auto;
-    padding-right: 10px;
+.summonerLevel {
+    font-size: 10px;
+    text-align: center;
+    padding-right: 3%;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 
+        -1px -1px 0 black,  
+        1px -1px 0 black,
+        -1px 1px 0 black,
+        1px 1px 0 black;
+}
+
+.summonerLevel h1 {
+    margin-bottom: 0;
+    margin-top: 1%;
 }
 
 .rightSide .champName1,
@@ -181,13 +227,13 @@ h2 {
     border-top-left-radius: 43px;
     border-top-right-radius: 43px;
     border-style: ridge;
-    padding-bottom: 10%;
+    padding-bottom: 6%;
 }
 
 .champPageName {
     text-align: center;
     font-size: 75px;
-    margin-top: 6%;
+    margin-top: 4.5%;
     margin-bottom: 0;
     color: rgba(255, 255, 255, 0.7);
     text-shadow: 
@@ -230,7 +276,7 @@ h2 {
 
 .spells img {
     height: 12vh;
-    margin-top: 3%;
+    margin-top: 2%;
     border: 1px solid black;
     border-radius: 10px;
     border-color: rgba(255, 255, 255, 0.7);

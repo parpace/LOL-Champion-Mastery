@@ -1072,9 +1072,10 @@ const updateChampMastery = async () => {
   clearRightSideContent()  
   
   const summonerName = document.querySelector(`.summonerName`)
+  const summonerLevel = document.querySelector(`.summonerLevelNumber`)
   const summonerIcon = document.querySelector(`.summonerIcon`)
 
-  const apiKey = 'RGAPI-0756ec8c-c305-4be3-abef-4a175713a2d4'
+  const apiKey = 'RGAPI-c1d3b7a2-d988-49f8-8d4f-3616996b743c'
   const puuid = summonerPuuid
 
   let masteryPage = document.querySelector(`.masteryPage`)
@@ -1096,7 +1097,7 @@ const updateChampMastery = async () => {
 
   const champMasteryResponse = await axios.get(`https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/${puuid}?api_key=${apiKey}`)
 
-  const summonerIconResponse = await axios.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${apiKey}`)
+  const summonerResponse = await axios.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${apiKey}`)
   
   // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my if statement.
   const firstThreeMasteries = champMasteryResponse.data.slice(0, 3)
@@ -1119,9 +1120,12 @@ const updateChampMastery = async () => {
 
     // Update summonerName to be the searchInput value and capitalize first letter
     summonerName.textContent = searchInput.value.charAt(0).toUpperCase() + searchInput.value.slice(1)
+    
+    // Update summonerLevel from API
+    summonerLevel.textContent = summonerResponse.data.summonerLevel
 
-    // Update summonerIcon by grabbing the profileIconId from the api and then referencing it to the profileicon images
-    let summonerIconId = summonerIconResponse.data.profileIconId
+    // Update summonerIcon by grabbing the profileIconId from the API and then referencing it to the profileicon images
+    let summonerIconId = summonerResponse.data.profileIconId
     summonerIcon.src = `profileicon/${summonerIconId}.png`
 
     // Update the backgroundImage of each div with the correct champion photo. Style it to cover
@@ -1298,7 +1302,7 @@ function clearRightSideContent() {
 
 /*------------------------------------- Cycle through background images  -----------------------------------------*/
 
-const images = [`champion/splash/Jinx_37.jpg`, `champion/splash/Fiora_31.jpg`, `champion/splash/XinZhao_20.jpg`, 'champion/splash/Zed_13.jpg', `champion/splash/Yone_19.jpg`, `champion/splash/Zed_10.jpg`, `champion/splash/Jayce_24.jpg`, `champion/splash/Zed_13.jpg` ]
+const images = [`champion/splash/Jinx_37.jpg`, `champion/splash/Fiora_31.jpg`, `champion/splash/XinZhao_20.jpg`, `champion/splash/Yone_19.jpg`, `champion/splash/Zed_10.jpg`, `champion/splash/Jayce_24.jpg`, `champion/splash/Zed_13.jpg` ]
 const fadeInDuration = 2000 // This is in milliseconds
 const fadeOutDuration = 2000
 const timeInterval = 6000
