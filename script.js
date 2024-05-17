@@ -35,32 +35,32 @@ searchForm.addEventListener('submit', submitSummoner)
 
 // Selected data from JSON files. Yes I enetered all of this manually (sort of, I sent ChatGBT each file individually and asked it to format it this way for me, then had to copy it). No, it wasn't a good use of time. However, the only ways that I found to link my functions to this JSON data would have involved more backend server work, and I didn't want to have someone else help me write more backend code that I didn't actually fully understand yet. Only alternative was to create a variable that had all of the data manually inputted.
 const championData = {
-    "266": {"name": "Aatrox","title": "the Darkin Blade","spells": {
-          "The Darkin Blade": {
-            "cooldown": [14, 12, 10, 8, 6]
-          },
-          "Infernal Chains": {
-            "cooldown": [20, 18, 16, 14, 12]
-          },
-          "Umbral Dash": {
-            "cooldown": [9, 8, 7, 6, 5]
-          },
-          "World Ender": {
-            "cooldown": [120, 100, 80]
-          }}},
-    "103": {"name": "Ahri","title": "the Nine-Tailed Fox","spells": {
-        "Orb of Deception": {
-            "cooldown": [7, 7, 7, 7, 7]
-        },
-        "Fox-Fire": {
-            "cooldown": [9, 8, 7, 6, 5]
-        },
-        "Charm": {
-            "cooldown": [12, 12, 12, 12, 12]
-        },
-        "Spirit Rush": {
-            "cooldown": [130, 115, 100]
-        }}},
+  "266": {"amne": "Aatrox","title": "the Darkin Blade","spells": {
+    "The Darkin Blade": {
+      "cooldown": [14, 12, 10, 8, 6]
+    },
+    "Infernal Chains": {
+      "cooldown": [20, 18, 16, 14, 12]
+    },
+    "Umbral Dash": {
+      "cooldown": [9, 8, 7, 6, 5]
+    },
+    "World Ender": {
+      "cooldown": [120, 100, 80]
+    }}},
+  "103": {"name": "Ahri","title": "the Nine-Tailed Fox","spells": {
+    "Orb of Deception": {
+        "cooldown": [7, 7, 7, 7, 7]
+    },
+    "Fox-Fire": {
+        "cooldown": [9, 8, 7, 6, 5]
+    },
+    "Charm": {
+        "cooldown": [12, 12, 12, 12, 12]
+    },
+    "Spirit Rush": {
+        "cooldown": [130, 115, 100]
+    }}},
     "84": {
         "name": "Akali",
         "title": "the Rogue Assassin",
@@ -1099,7 +1099,7 @@ const updateChampMastery = async () => {
 
   const summonerResponse = await axios.get(`https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/${puuid}?api_key=${apiKey}`)
   
-  // Ok I'm trying to understand this. ChatGBT helped me out, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my if statement.
+  // Ok I'm trying to understand this. ChatGBT helped me troubleshoot, because at first I only had the if statement below. However, I was naturally getting all of the champions that this summoner has mastery of. So much data. Because of this, I needed to target just the parts of the array that I wanted, which are the 3 highest mastery champions on that summoner's account. Using the slice method that we have learned, I can target those before I run my if statement.
   const firstThreeMasteries = champMasteryResponse.data.slice(0, 3)
   
   if (firstThreeMasteries.length > 0) {
@@ -1258,34 +1258,33 @@ function searchChampion() {
     // If champion is returned as true, make the championPage content visible, and update the variables.
     if (champion) {
 
-        championPage.style.display = `block`
+      championPage.style.display = `block`
 
-        champPageHeader.style.backgroundImage = `url(champion/splash/${capitalizedChampName}_0.jpg)`
-        champPageHeader.style.backgroundSize = `cover`
+      champPageHeader.style.backgroundImage = `url(champion/splash/${capitalizedChampName}_0.jpg)`
+      champPageHeader.style.backgroundSize = `cover`
 
-        champPageName.textContent = championData[champion].name
-        champTitle.textContent = `"${championData[champion].title}"`
+      champPageName.textContent = championData[champion].name
+      champTitle.textContent = `"${championData[champion].title}"`
 
-        qSpellImg.src = `spell/${capitalizedChampName}Q.png`
-        qSpellImg.alt = `${capitalizedChampName} Q`
-        wSpellImg.src = `spell/${capitalizedChampName}W.png`
-        wSpellImg.alt = `${capitalizedChampName} W`
-        eSpellImg.src = `spell/${capitalizedChampName}E.png`
-        eSpellImg.alt = `${capitalizedChampName} E`
-        rSpellImg.src = `spell/${capitalizedChampName}R.png`
-        rSpellImg.alt = `${capitalizedChampName} R`
+      qSpellImg.src = `spell/${capitalizedChampName}Q.png`
+      qSpellImg.alt = `${capitalizedChampName} Q`
+      wSpellImg.src = `spell/${capitalizedChampName}W.png`
+      wSpellImg.alt = `${capitalizedChampName} W`
+      eSpellImg.src = `spell/${capitalizedChampName}E.png`
+      eSpellImg.alt = `${capitalizedChampName} E`
+      rSpellImg.src = `spell/${capitalizedChampName}R.png`
+      rSpellImg.alt = `${capitalizedChampName} R`
 
-        spellName1.textContent = Object.keys(championData[champion].spells)[0]
-        spellName2.textContent = Object.keys(championData[champion].spells)[1]
-        spellName3.textContent = Object.keys(championData[champion].spells)[2]
-        spellName4.textContent = Object.keys(championData[champion].spells)[3]
+      spellName1.textContent = Object.keys(championData[champion].spells)[0]
+      spellName2.textContent = Object.keys(championData[champion].spells)[1]
+      spellName3.textContent = Object.keys(championData[champion].spells)[2]
+      spellName4.textContent = Object.keys(championData[champion].spells)[3]
 
-        // This stumped me for a long time. I need to access the object of spellName1 in order to get the array of the cooldown inside of it. Eventually I found that you can use object.keys inside of the spells object, just like I did above. I didnt like the commas inbetween the cooldown numbers, so I made it a '/' instead.
-        spell1Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[0]].cooldown.join(' / ')
-        spell2Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[1]].cooldown.join(' / ')
-        spell3Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[2]].cooldown.join(' / ')
-        spell4Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[3]].cooldown.join(' / ')
-
+      // This stumped me for a long time. I need to access the object of spellName1 in order to get the array of the cooldown inside of it. Eventually I found that you can use object.keys inside of the spells object, just like I did above. I didnt like the commas inbetween the cooldown numbers, so I made it a '/' instead.
+      spell1Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[0]].cooldown.join(' / ')
+      spell2Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[1]].cooldown.join(' / ')
+      spell3Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[2]].cooldown.join(' / ')
+      spell4Cooldown.textContent = championData[champion].spells[Object.keys(championData[champion].spells)[3]].cooldown.join(' / ')
     }
     else {
         console.log(`champion not found`)
