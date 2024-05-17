@@ -1183,7 +1183,7 @@ clickChampion()
 
 /*-------------------------------------- Champion Name Search ----------------------------------------*/
 
-// Open the dropdown menu when clicking the arrow. ChatGBT helped me with this as I knew nothing about dropdown menus. We used a nice one line ternary which commands the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked. Also, I needed to include a listener for when someone clicks outside of the dropdownMenu area, making it dissapear.
+// Open the dropdown menu when clicking the arrow. ChatGBT taught me some styling tips so that it would look like a dropdown menu, and also helped me understand what we want out of the arrow event listener. We used a nice one line ternary which commands the dropdownMenu style go away if it was visible when the arrow is clicked, or appear if it was not visible when the arrow was clicked.
 const arrow = document.querySelector(`.arrow`)
 const dropdownMenu = document.getElementById('dropdownMenu')
 
@@ -1191,6 +1191,7 @@ arrow.addEventListener(`click`, function() {
     dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block'
 })
 
+// When someone clicks outside of the dropdownMenu area, make it dissapear.
 document.addEventListener('click', function(event) {
     if (!arrow.contains(event.target) && !dropdownMenu.contains(event.target)) {
         dropdownMenu.style.display = 'none'

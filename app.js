@@ -1,4 +1,4 @@
-// This was all from my friend. Obviously I knew nothing about backend yet, but I was stuck trying to get around CORS errors for so many hours. He  taught me how to set up this simple node.js server.
+// This was all from my friend. Obviously I knew nothing about backend yet, but I was stuck trying to get around CORS errors for so many hours. He taught me how to set up this simple node.js server.
 const express = require('express')
 const axios = require('axios')
 const cors = require('cors')
